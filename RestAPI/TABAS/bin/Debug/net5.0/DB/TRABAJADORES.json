@@ -1,0 +1,16 @@
+[
+  {
+    "Nombre": "Juan",
+    "Apellido": "Perez",
+    "Cedula": 123,
+    "rol": "scan",
+    "contrasena": "abc"
+  },
+  {
+    "Nombre": "Carlos",
+    "Apellido": "Rivera",
+    "Cedula": 456,
+    "rol": "administrador",
+    "contrasena": "dcf"
+  }
+]
