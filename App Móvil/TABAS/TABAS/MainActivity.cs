@@ -1,10 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using AndroidX.AppCompat.App;
-using System.Net;
-using Android.Content;
 using Android.Widget;
-using Android.Support;
 //using Newtonsoft.Json;
 
 namespace TABAS
