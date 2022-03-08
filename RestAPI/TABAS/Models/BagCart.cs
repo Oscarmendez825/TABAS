@@ -8,7 +8,7 @@ namespace TABAS.Models
     public class BagCart
     {
         public string marca { get; set; }
-        public string identificador_BC { get; set; }
-        public string año { get; set; }
+        public int identificador_BC { get; set; }
+        public int anno { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TABAS.Models;
@@ -13,6 +15,12 @@ namespace TABAS.Controllers
     [ApiController]
     public class BagCartController : ControllerBase
     {
+
+        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\BAGCART.json";
+
+        //private string path = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\BAGCART.json";
+
+
         // GET: api/<BagCartController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -24,21 +32,38 @@ namespace TABAS.Controllers
         [HttpGet("{identificador_BC}")]
         public string Get(string identificador_BC)
         {
-            return identificador_BC switch
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                "1" => "BagCart 1",
-                "2" => "BagCart 2",
-                "3" => "BagCart 4",
-                "4" => "BagCart 4",
-                _ => throw new NotSupportedException("BagCart invalida")
-            };
+                var json = jsonStream.ReadToEnd();
+                var bagcart = JsonConvert.DeserializeObject<List<BagCart>>(json);
+                foreach (BagCart bagcarttp in bagcart)
+                {
+                    if(bagcarttp.identificador_BC == Int32.Parse(identificador_BC))
+                    {
+                        return JsonConvert.SerializeObject(bagcarttp);
+                    }
+                }
+
+            }
+            return "ERROR";
+
         }
 
         // POST api/<BagCartController>
         [HttpPost]
         public string Post( BagCart bagcart)
         {
-            return bagcart.identificador_BC;
+            string jsonEscribir = "";
+            using(StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                var bagcarts = JsonConvert.DeserializeObject<List<BagCart>>(json);
+                bagcarts.Add(bagcart);
+                string json2 = JsonConvert.SerializeObject(bagcarts);
+                jsonEscribir = json2;
+            }
+            System.IO.File.WriteAllText(path, jsonEscribir);
+            return "OK";
         }
 
     }

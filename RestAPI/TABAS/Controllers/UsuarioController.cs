@@ -14,30 +14,18 @@ namespace TABAS.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\TRABAJADORES.json";
 
-        /**
-         * Metodo que retorna la informacion de todos los usuarios
-         */
-
-        // GET: api/<ValuesController>/Trabajadores
-        [HttpGet("Trabajadores")]
-        public string GetUsuarios()
+        // GET: api/<ValuesController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            using (StreamReader jsonStream = System.IO.File.OpenText(path))
-            {
-                var json = jsonStream.ReadToEnd();
-                return json;
-            }
+            return new string[] { "Todos los usuarios" };
         }
 
-        /**
-         * Metodo utilizado para solicitar la informacion de un trabajador
-         */
-
-        // GET api/<ValuesController>/Trabajadores/{cedula}
-        [HttpGet("Trabajadores/{cedula}")]
-        public string GetUsuario(string cedula)
+        // GET api/<ValuesController>/
+        [HttpGet("{cedula}")]
+        public string Get(string cedula)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -54,26 +42,16 @@ namespace TABAS.Controllers
             return "ERROR";
         }
 
-        /**
-         * Metodo utilizado para registrar un nuevo trabajador
-         */
 
         // POST api/<ValuesController>
         [HttpPost]
-        public string PostRegistrar(Usuario usuario)
+        public string Post(Usuario usuario)
         {
             string jsonEscribir = "";
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
                 var usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
-                foreach (Usuario usuariotp in usuarios)
-                {
-                    if (usuariotp.Cedula == usuario.Cedula)
-                    {
-                        return "ERROR";
-                    }
-                }
                 usuarios.Add(usuario);
                 string json2 = JsonConvert.SerializeObject(usuarios);
                 jsonEscribir = json2;
@@ -81,33 +59,5 @@ namespace TABAS.Controllers
             System.IO.File.WriteAllText(path, jsonEscribir);
             return "OK";
         }
-
-        /**
-         * Metodo utilizado para el inicio de sesion de un trabajador
-         */
-
-        //POST: api/<ValuesController>/IniciarSesion
-        [HttpPost("IniciarSesion")]
-        public string PostIniciarSesion(Usuario usuario) {
-
-            using (StreamReader jsonStream = System.IO.File.OpenText(path))
-            {
-                var json = jsonStream.ReadToEnd();
-                var usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
-                foreach (Usuario usuariotp in usuarios)
-                {
-                    if (usuariotp.Cedula == usuario.Cedula)
-                    {
-                        if (usuariotp.contrasena == usuario.contrasena) 
-                        {
-                            return "OK";
-                        }
-                    }
-                }
-            }
-            return "ERROR";
-        }
-
-
     }
 }

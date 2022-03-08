@@ -12,5 +12,7 @@ namespace TABAS.Models
         public int costo { get; set; }
         public int numero_maleta { get; set; }
 
+
+
     }
 }

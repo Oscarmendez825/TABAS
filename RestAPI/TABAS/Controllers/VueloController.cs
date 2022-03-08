@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TABAS.Models;
@@ -13,6 +15,12 @@ namespace TABAS.Controllers
     [ApiController]
     public class VueloController : ControllerBase
     {
+        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\VUELOS.json";
+        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\BAGCART.json";
+
+        //private string path = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\VUELOS.json";
+        //private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\BAGCART.json";
+
         // GET: api/<VueloController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -24,22 +32,64 @@ namespace TABAS.Controllers
         [HttpGet("{numVuelo}")]
         public string Get(string numVuelo)
         {
-            return numVuelo switch
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                "1" => "Vuelo 1",
-                "2" => "Vuelo 2",
-                "3" => "Vuelo 3",
-                "4" => "Vuelo 4",
-                _ => throw new NotSupportedException("Vuelo invalida")
-            };
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
+                foreach (Vuelo vuelotp in vuelos)
+                {
+                    if (vuelotp.numVuelo == Int32.Parse(numVuelo))
+                    {
+                        return JsonConvert.SerializeObject(vuelotp);
+                    }
+                }
+            }
+            return "ERROR";
         }
+
 
         // POST api/<VueloController>
         [HttpPost]
-        public string Post(Vuelo vuelo )
+        public string Post(Vuelo vuelo)
         {
-            return vuelo.numVuelo;
+            String jsonEscribir = "";
+            bool flag = false;
+            using (StreamReader jsonStream = System.IO.File.OpenText(path2))
+            {
+                var json = jsonStream.ReadToEnd();
+                var bagcarts = JsonConvert.DeserializeObject<List<BagCart>>(json);
+                foreach(BagCart bagcarttp in bagcarts)
+                {
+                    if (bagcarttp.identificador_BC == vuelo.BC_ID)
+                    {
+                        flag = true;
+                    }
+                }
+            }
+
+            using(StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
+                foreach(Vuelo vuelotp in vuelos)
+                {
+                    if((vuelotp.BC_ID == vuelo.BC_ID) || (flag == false))
+                    {
+                        return "ERROR";
+                    }
+                }
+
+                vuelos.Add(vuelo);
+                string json2 = JsonConvert.SerializeObject(vuelos);
+                jsonEscribir = json2;
+            }
+            System.IO.File.WriteAllText(path, jsonEscribir);
+            return "OK";
         }
 
     }
+
 }
+        
+        
+ 

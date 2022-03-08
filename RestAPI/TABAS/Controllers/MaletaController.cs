@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using TABAS.Models;
-using System.IO;
-using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,8 +16,12 @@ namespace TABAS.Controllers
     public class MaletaController : ControllerBase
     {
 
-        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\MALETAS.json";
-        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\MALETAS.json";
+        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\TABAS\RestAPI\TABAS\DB\TRABAJADORES.json";
+
+        //private string path = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\MALETAS.json";
+        //private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\RestAPI\TABAS\DB\TRABAJADORES.json";
+
         // GET: api/<MaletaController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -29,19 +33,23 @@ namespace TABAS.Controllers
         [HttpGet("{numero_maleta}")]
         public string Get(string numero_maleta)
         {
-            return numero_maleta switch
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                "1" => "Maleta 1",
-                "2" => "Maleta 2",
-                "3" => "Maleta 4",
-                "4" => "Maleta 4",
-                _ => throw new NotSupportedException("Número de maleta invalida")
-            };
-        }
+                var json = jsonStream.ReadToEnd();
+                var maletas = JsonConvert.DeserializeObject<List<Maleta>>(json);
+                foreach (Maleta maletatp in maletas)
+                {
+                    if(maletatp.numero_maleta == Int32.Parse(numero_maleta))
+                    {
+                        return JsonConvert.SerializeObject(maletatp);
+                    }
+                }
 
-        /**
-           * Metodo crear una nueva maleta
-           */
+            }
+
+            return "ERROR";
+
+        }
 
         // POST api/<MaletaController>
         [HttpPost]
@@ -55,7 +63,7 @@ namespace TABAS.Controllers
                 var usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
                 foreach (Usuario usuariotp in usuarios)
                 {
-                    if (usuariotp.Cedula == maleta.cedulaUsuario) 
+                    if (usuariotp.Cedula == maleta.cedulaUsuario)
                     {
                         flag = true;
                     }
