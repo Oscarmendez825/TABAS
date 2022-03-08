@@ -3,6 +3,8 @@ using Android.OS;
 using AndroidX.AppCompat.App;
 using Android.Widget;
 using Newtonsoft.Json;
+using System.Net;
+using TABAS.APIModels;
 
 namespace TABAS
 {
@@ -17,7 +19,7 @@ namespace TABAS
         private EditText _userId;
         private EditText _userPassword;
         private Toast _toast;
-        public const string Ipv4 = "192.168.1.2";
+        public const string Ipv4 = "192.168.0.11";
 
         /// <summary>
         /// This method is called when the activity is starting.
@@ -41,26 +43,34 @@ namespace TABAS
             // Manages the user info entered for the sign in
             _signInButton.Click += (sender, args) =>
             {
-                var userEmailInput = _userId.Text;
+                var userIdInput = _userId.Text;
                 var userPasswordInput = _userPassword.Text;
 
-                if (userEmailInput.Equals("") || userPasswordInput.Equals(""))
+                if (userIdInput.Equals("") || userPasswordInput.Equals(""))
                 {
                     toastText = "Debe ingresar la información solicitada.";
                 }
 
                 else
                 {
-                    /*using var webClient = new WebClient { BaseAddress = "http://" + MainActivity.Ipv4 + ":8080/CookTime_war/cookAPI/" };
-                    var url = "resources/auth?email=" + userEmailInput + "&password=" + userPasswordInput;
+                    var user = new User(int.Parse(userIdInput), userPasswordInput);
+                    var jsonResult = JsonConvert.SerializeObject(user);
+
+                    using var webClient = new WebClient { BaseAddress = "http://" + Ipv4 + ":44379/api" };
+                    var url = "Usuario/IniciarSesion";
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
-                    var send = webClient.DownloadString(url);
+                    var send = webClient.UploadString(url, jsonResult);
 
                     var response = JsonConvert.DeserializeObject<string>(send);
 
-                    value = response;*/
+                    if (response.Equals("OK")) {
+                        toastText = "Sesión iniciada";
+                    }
+                    else
+                    {
+                        toastText = "La cédula o la contraseña son incorrectas.";
+                    }
 
-                    toastText = "Sesión iniciada";
                 }
                 _toast = Toast.MakeText(this, toastText, ToastLength.Short);
                 _toast.Show();
