@@ -1,0 +1,22 @@
+<p>Tabla de ejemplo de los trabajdaores</p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">id</th>
+    <th scope="col">nombre</th>
+    <th scope="col">apellido</th>
+    <th scope="col">rol</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lista of trabajadores; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ lista.id | number }}</td>
+      <td>{{ lista.name}}</td>
+      <td>{{ lista.lastName}}</td>
+      <td>{{ lista.rol}}</td>
+    </tr>
+  </tbody>
+</table>
