@@ -87,10 +87,9 @@ namespace REST.Controllers
          */
 
         //POST: api/<ValuesController>/IniciarSesion
-        [HttpPost("LogIn")]
+        [HttpPost("IniciarSesion")]
         public string PostIniciarSesion(Usuario usuario)
         {
-
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
