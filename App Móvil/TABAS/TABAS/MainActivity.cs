@@ -5,6 +5,7 @@ using Android.Widget;
 using Newtonsoft.Json;
 using System.Net;
 using TABAS.APIModels;
+using System;
 
 namespace TABAS
 {
@@ -56,12 +57,13 @@ namespace TABAS
                     var user = new User(int.Parse(userIdInput), userPasswordInput);
                     var jsonResult = JsonConvert.SerializeObject(user);
 
-                    using var webClient = new WebClient { BaseAddress = "https://" + Ipv4 + ":44349/api/" };
+                    using var webClient = new WebClient { BaseAddress = "http://" + Ipv4 + ":32967/api/" };
                     var url = "Usuario/IniciarSesion";
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     var send = webClient.UploadString(url, jsonResult);
 
-                    var response = JsonConvert.DeserializeObject<string>(send);
+                    var response = send;
+                    toastText = response;
 
                     if (response.Equals("OK")) {
                         toastText = "Sesión iniciada";
