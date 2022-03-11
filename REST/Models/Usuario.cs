@@ -10,10 +10,9 @@ namespace REST.Models
     {
         public int Cedula { get; set; }
         public string contrasena { get; set; }
-        [JsonIgnore]
-        public string Nombre { get; set; } = null;
-        public string Apellido { get; set; } = null;
-        public string rol { get; set; } = null;
+        public string Nombre { get; set; } = "";
+        public string Apellido { get; set; } = "";
+        public string rol { get; set; } = "";
     
     }
 
