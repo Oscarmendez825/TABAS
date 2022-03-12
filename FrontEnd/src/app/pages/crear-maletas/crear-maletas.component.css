@@ -1,0 +1,7 @@
+div.container-fluid {
+  background-color: aliceblue;
+  box-shadow: black;
+  padding: 16px;
+  border: 1 px solid,black;
+  min-height: 590px;
+}
