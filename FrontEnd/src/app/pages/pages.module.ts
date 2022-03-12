@@ -6,6 +6,7 @@ import { BagCartComponent } from './bag-cart/bag-cart.component';
 import { LoginComponent } from './login/login.component';
 import { CrearMaletasComponent } from './crear-maletas/crear-maletas.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trabajador.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReportesComponent } from './reportes/reportes.component';
     LoginComponent,
     CrearMaletasComponent,
     ReportesComponent,
+    RegistroTrabajadorComponent,
   ],
   imports: [
     CommonModule,

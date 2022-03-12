@@ -7,6 +7,7 @@ import { CrearMaletasComponent } from './pages/crear-maletas/crear-maletas.compo
 import { HomeComponent } from './pages/home/home.component';
 import { InformacionComponent } from './pages/informacion/informacion.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegistroTrabajadorComponent } from './pages/registro-trabajador/registro-trabajador.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "login",component: LoginComponent},
   {path: "maletas",component:CrearMaletasComponent},
   {path: "reportes", component: ReportesComponent},
+  {path: "registro", component: RegistroTrabajadorComponent},
   {path: "**", redirectTo: "home", pathMatch:"full"},
 ];
 
