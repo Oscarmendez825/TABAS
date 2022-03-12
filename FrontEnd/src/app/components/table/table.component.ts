@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 interface Trabajadores {
   name: string;
   lastName: string;
@@ -106,11 +105,10 @@ const TRAB: Trabajadores[] = [
   }
 ];
 
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
 
