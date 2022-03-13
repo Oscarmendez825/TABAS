@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { CrearMaletasComponent } from './crear-maletas/crear-maletas.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trabajador.component';
+import {FormsModule} from "@angular/forms";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {Router, RouterModule, Routes} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trab
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
+    FormsModule,
   ]
 })
 export class PagesModule { }

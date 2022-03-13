@@ -1,7 +1,26 @@
 div.container-fluid {
-  background-color: aliceblue;
+  background-color: rgb(152, 168, 179);
   box-shadow: black;
   padding: 16px;
   border: 1 px solid,black;
   min-height: 590px;
+}
+input{
+  background-color: rgb(100, 100, 100);
+  width: 30%;
+  font-size: small;
+}
+label{
+  color: rgb(255, 254, 254);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  padding: 10px;
+  font-size: larger;
+}
+button{
+  background-color: rgb(53, 92, 92);
+  color:white;
+}
+select{
+  background-color: rgb(100, 100, 100);
+  color: white;
 }
