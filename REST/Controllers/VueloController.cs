@@ -77,7 +77,7 @@ namespace REST.Controllers
             using (StreamReader jsonStream = System.IO.File.OpenText(path3))
             {
                 var json = jsonStream.ReadToEnd();
-                var aviones = JsonConvert.DeserializeObject<List<BagCart>>(json);
+                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json);
                 foreach (Avion aviontp in aviones)
                 {
                     if (aviontp.placaAvion == vuelo.placaAvion)

@@ -48,8 +48,8 @@
            name="Contrasena" 
            id="Contrasena"
            name = "Contrasena"
-           placeholder="Ej: Cambronero, Brenes, González, Méndez" 
-           [(ngModel)]="nuevoTrabajador.Contrasena"
+           placeholder="Escriba su contraseña" 
+           [(ngModel)]="nuevoTrabajador.contrasena"
            #Contrasena = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
            required/>

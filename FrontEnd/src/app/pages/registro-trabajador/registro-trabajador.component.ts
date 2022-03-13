@@ -14,7 +14,7 @@ export class RegistroTrabajadorComponent implements OnInit {
     Nombre: '',
     Apellido: '',
     Cedula: 0,
-    Contrasena: '',
+    contrasena: '',
     rol: ''
   }
   constructor(private http: HttpClient, private router: Router) { }
@@ -27,10 +27,9 @@ export class RegistroTrabajadorComponent implements OnInit {
     this.http.post(url,this.nuevoTrabajador).subscribe(
       res =>{
         location.reload();
-
       },
       error => {
-        alert("An error has occurred while sending data");
+        alert("No se envia nada");
       }
     );
 }
@@ -41,6 +40,6 @@ export interface Trabajador{
   Nombre:string;
   Apellido:string;
   Cedula:number;
-  Contrasena:string;
+  contrasena:string;
   rol: string;
 }
