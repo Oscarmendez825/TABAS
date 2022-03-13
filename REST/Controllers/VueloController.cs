@@ -17,15 +17,21 @@ namespace REST.Controllers
     {
         private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
         private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
+        private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
 
         //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\VUELOS.json";
         //private string path2 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\BAGCART.json";
+        //private string path3 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\AVION.json";
 
         // GET: api/<VueloController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("Vuelos")]
+        public string GetUsuarios()
         {
-            return new string[] { "Todos los vuelos" };
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                return json;
+            }
         }
 
         // GET api/<VueloController>/5
@@ -53,7 +59,8 @@ namespace REST.Controllers
         public string Post(Vuelo vuelo)
         {
             String jsonEscribir = "";
-            bool flag = false;
+            bool flag1 = false;
+            bool flag2 = false;
             using (StreamReader jsonStream = System.IO.File.OpenText(path2))
             {
                 var json = jsonStream.ReadToEnd();
@@ -62,18 +69,31 @@ namespace REST.Controllers
                 {
                     if (bagcarttp.identificador_BC == vuelo.BC_ID)
                     {
-                        flag = true;
+                        flag1 = true;
                     }
                 }
             }
 
-            using(StreamReader jsonStream = System.IO.File.OpenText(path))
+            using (StreamReader jsonStream = System.IO.File.OpenText(path3))
+            {
+                var json = jsonStream.ReadToEnd();
+                var aviones = JsonConvert.DeserializeObject<List<BagCart>>(json);
+                foreach (Avion aviontp in aviones)
+                {
+                    if (aviontp.placaAvion == vuelo.placaAvion)
+                    {
+                        flag2 = true;
+                    }
+                }
+            }
+
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
                 var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
                 foreach(Vuelo vuelotp in vuelos)
                 {
-                    if((vuelotp.BC_ID == vuelo.BC_ID) || (flag == false))
+                    if((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) ||(flag2 == false))
                     {
                         return "ERROR";
                     }

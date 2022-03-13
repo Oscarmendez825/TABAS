@@ -23,10 +23,14 @@ namespace REST.Controllers
         //private string path2 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\TRABAJADORES.json";
 
         // GET: api/<MaletaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("Maletas")]
+        public string GetUsuarios()
         {
-            return new string[] { "Todas las maletas" };
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                return json;
+            }
         }
 
         // GET api/<MaletaController>/5
