@@ -60,9 +60,10 @@ namespace REST.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public string PostRegistrar(Usuario usuario)
+        public Estado PostRegistrar(Usuario usuario)
         {
             string jsonEscribir = "";
+            Estado estadotp = new Estado();
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
@@ -71,7 +72,8 @@ namespace REST.Controllers
                 {
                     if (usuariotp.Cedula == usuario.Cedula)
                     {
-                        return "ERROR";
+                        estadotp.estado = "ERROR";
+                        return estadotp;
                     }
                 }
                 usuarios.Add(usuario);
@@ -79,7 +81,8 @@ namespace REST.Controllers
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
-            return "OK";
+            estadotp.estado = "OK";
+            return estadotp;
         }
 
         /**

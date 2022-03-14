@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import { TrabajadorModel } from '../models/trabajador-model.model';
+import { EstadoModel } from '../models/estado-model';
 
 @Component({
   selector: 'app-registro-trabajador',
@@ -9,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class RegistroTrabajadorComponent implements OnInit {
 
-  nuevoTrabajador: Trabajador =
+  nuevoTrabajador: TrabajadorModel =
   {
     Nombre: '',
     Apellido: '',
@@ -17,29 +19,25 @@ export class RegistroTrabajadorComponent implements OnInit {
     contrasena: '',
     rol: ''
   }
+  estadoRes: EstadoModel = {
+    estado:""
+  }
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   sendTrabajador():void{
-    let url = "http://localhost:32967/api/Usuario";
-    this.http.post(url,this.nuevoTrabajador).subscribe(
+    let url = "https://localhost:44374/api/Usuario";
+    this.http.post<any>(url,this.nuevoTrabajador).subscribe(
       res =>{
-        location.reload();
-      },
-      error => {
-        alert("No se envia nada");
+        this.estadoRes = res;
+        if(this.estadoRes.estado == "OK"){
+          location.reload();
+        }else{
+          alert("Hubo un problema al realizar su registro");
+        }    
       }
     );
 }
-}
-
-
-export interface Trabajador{
-  Nombre:string;
-  Apellido:string;
-  Cedula:number;
-  contrasena:string;
-  rol: string;
 }

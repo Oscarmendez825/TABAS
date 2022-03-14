@@ -10,6 +10,8 @@ import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trab
 import {FormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Router, RouterModule, Routes} from "@angular/router";
+import { TrabajadorModel } from './models/trabajador-model.model';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +22,15 @@ import {Router, RouterModule, Routes} from "@angular/router";
     CrearMaletasComponent,
     ReportesComponent,
     RegistroTrabajadorComponent,
+    
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
+    
   ]
 })
-export class PagesModule { }
+export class PagesModule { 
+  
+}
