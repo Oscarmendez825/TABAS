@@ -34,7 +34,6 @@
            class="form-control" 
            id="Cedula"
            name = "Cedula"
-           placeholder="Ej: 123456789" 
            [(ngModel)]="nuevoTrabajador.Cedula"
            #Cedula = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -58,14 +57,22 @@
   <div class="mb-Rol">
     <label for="Rol" class="form-label">Rol</label>
 
-    <select name="Rol">
+    <select class="form-control"
+            name="Rol"
+            id="Rol"
+            [(ngModel)]="nuevoTrabajador.rol"
+            #Rol = "ngModel"
+            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+            required>
 
-      <option>Coche</option>
+      <option value="Embarcador">Embarcador</option>
       
-      <option>Avión</option>
+      <option value="Scan">Scan</option>
       
-      <option>Tren</option>
+      <option value="Administrador">Administrador</option>
       
+      <option value="Recepcionista">Recepcionista</option>
+
       </select>
   </div>
 
