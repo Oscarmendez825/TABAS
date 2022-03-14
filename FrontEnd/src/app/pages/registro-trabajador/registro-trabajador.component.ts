@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import { TrabajadorModel } from '../models/trabajador-model.model';
 import { EstadoModel } from '../models/estado-model';
+import { ApiPostService } from 'src/app/components/postService/api-post-service';
 
 @Component({
   selector: 'app-registro-trabajador',
@@ -22,14 +23,13 @@ export class RegistroTrabajadorComponent implements OnInit {
   estadoRes: EstadoModel = {
     estado:""
   }
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private apiService: ApiPostService) { }
 
   ngOnInit(): void {
   }
 
   sendTrabajador():void{
-    let url = "https://localhost:44374/api/Usuario";
-    this.http.post<any>(url,this.nuevoTrabajador).subscribe(
+    this.apiService.registrarTrab(this.nuevoTrabajador).subscribe(
       res =>{
         this.estadoRes = res;
         if(this.estadoRes.estado == "OK"){
