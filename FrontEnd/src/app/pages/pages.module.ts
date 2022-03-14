@@ -9,8 +9,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trabajador.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {Router, RouterModule, Routes} from "@angular/router";
-import { TrabajadorModel } from './models/trabajador-model.model';
+import { HistorialTrabajadoresComponent } from './historialTrabajadores/historial-trabajadores/historial-trabajadores.component'
 
 
 @NgModule({
@@ -22,6 +21,7 @@ import { TrabajadorModel } from './models/trabajador-model.model';
     CrearMaletasComponent,
     ReportesComponent,
     RegistroTrabajadorComponent,
+    HistorialTrabajadoresComponent,
     
   ],
   imports: [

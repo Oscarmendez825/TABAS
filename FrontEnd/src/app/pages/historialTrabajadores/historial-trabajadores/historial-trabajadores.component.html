@@ -1,0 +1,23 @@
+<h1>Trabajadores con cuenta activa en TABAS</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Apellido</th>
+    <th scope="col">Cedula</th>
+    <th scope="col">Rol</th>  
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lista of trabajadores; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ lista.Nombre}}</td>
+      <td>{{ lista.Apellido}}</td>
+      <td>{{ lista.Cedula}}</td>
+      <td>{{ lista.rol}}</td>
+    </tr>
+  </tbody>
+</table>
+
