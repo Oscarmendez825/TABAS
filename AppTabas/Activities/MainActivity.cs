@@ -6,8 +6,9 @@ using Android.Widget;
 using Newtonsoft.Json;
 using AppTabas.APIModels;
 using System.Net;
+using Android.Content;
 
-namespace AppTabas
+namespace AppTabas.Activities
 {
     /// <summary>
     /// This class represents the first view seen when the app is opened.
@@ -16,7 +17,8 @@ namespace AppTabas
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        public const string Ipv4 = "192.168.0.11";
+        private const string Ipv4 = "192.168.0.11";
+        public const string baseAddress = "http://" + Ipv4 + ":32967/api/";
         private EditText _userId;
         private EditText _userPassword;
         private Button _signInButton;
@@ -46,18 +48,24 @@ namespace AppTabas
                 string toastText;
                 var userIdInput = _userId.Text;
                 var userPasswordInput = _userPassword.Text;
+                bool isPassNum = int.TryParse(userPasswordInput, out int userPassNum);
 
                 if (userIdInput.Equals("") || userPasswordInput.Equals(""))
                 {
                     toastText = "Debe ingresar la información solicitada.";
                 }
 
+                else if (!isPassNum)
+                {
+                    toastText = "La cédula debe ser un número";
+                }
+
                 else
                 {
-                    var user = new User(int.Parse(userIdInput), userPasswordInput);
+                    var user = new User(userPassNum, userPasswordInput);
                     var jsonResult = JsonConvert.SerializeObject(user);
 
-                    using var webClient = new WebClient { BaseAddress = "http://" + Ipv4 + ":32967/api/" };
+                    using var webClient = new WebClient { BaseAddress = baseAddress };
                     var url = "Usuario/IniciarSesion";
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     var send = webClient.UploadString(url, jsonResult);
@@ -67,6 +75,13 @@ namespace AppTabas
                     if (response.Equals("OK"))
                     {
                         toastText = "Sesión iniciada";
+
+                        // Open new page/layout on the app
+                        var intent = new Intent(this, typeof(BagsActivity));
+                        intent.PutExtra("WorkerId", userIdInput); //Pass info on to the next activity
+                        StartActivity(intent);
+                        OverridePendingTransition(Android.Resource.Animation.SlideInLeft, Android.Resource.Animation.SlideOutRight);
+                        Finish();
                     }
                     else
                     {

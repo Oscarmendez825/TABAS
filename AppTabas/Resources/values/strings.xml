@@ -6,4 +6,5 @@
 	<string name="cedula_hint">Cédula</string>
 	<string name="password_hint">Contraseña</string>
 	<string name="login">Iniciar Sesión</string>
+	<string name="welcome">Bienvenid@, </string>
 </resources>

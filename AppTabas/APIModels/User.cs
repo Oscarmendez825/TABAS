@@ -6,9 +6,11 @@
     /// </summary>
     public class User
     {
-        public int Cedula;
-        public string contrasena;
-
+        public int Cedula { get; set; }
+        public string contrasena { get; set; }
+        public string Nombre { get; set; } = "";
+        public string Apellido { get; set; } = "";
+        public string rol { get; set; } = "";
 
         /// <summary>
         /// Constructor for the User class
