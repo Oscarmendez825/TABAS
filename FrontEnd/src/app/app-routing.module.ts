@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: "maletas",component:CrearMaletasComponent},
   {path: "reportes", component: ReportesComponent},
   {path: "registro", component: RegistroTrabajadorComponent},
-  {path: "**", redirectTo: "home", pathMatch:"full"},
+  {path: "**", redirectTo: "login", pathMatch:"full"},
 ];
 
 @NgModule({
