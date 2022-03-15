@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BagCartComponent } from './pages/bag-cart/bag-cart.component';
 import { CrearMaletasComponent } from './pages/crear-maletas/crear-maletas.component';
+import { HistorialTrabajadoresComponent } from './pages/historialTrabajadores/historial-trabajadores/historial-trabajadores.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InformacionComponent } from './pages/informacion/informacion.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: "maletas",component:CrearMaletasComponent},
   {path: "reportes", component: ReportesComponent},
   {path: "registro", component: RegistroTrabajadorComponent},
+  {path: "historialTrabajadores", component: HistorialTrabajadoresComponent},
   {path: "**", redirectTo: "login", pathMatch:"full"},
 ];
 

@@ -11,8 +11,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private Auth:AuthService,private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
   loginUser(event: { preventDefault: () => void; target: any; }){
 
     event.preventDefault()
