@@ -1,3 +1,5 @@
+
+<app-header></app-header>
 <form name="form" (ngSubmit)="f.form.valid && sendMaleta()" #f="ngForm" novalidate class="sign-up-form">
   <div class="form-group">
     <div class="container-fluid" align = "center">
@@ -58,6 +60,7 @@
 
   <div class="mb-Costo">
     <label for="Costo" class="form-label">Costo</label>
+
     <input class="form-control" 
            type="number" 
            name="Costo" 
@@ -71,7 +74,9 @@
   </div>
   <p>
 
+
     
+
   </p>
 
   <button type="submit" class="button">Registrar</button>
@@ -79,3 +84,6 @@
     </div>
   </div>
 </form>
+
+<app-footer></app-footer>
+

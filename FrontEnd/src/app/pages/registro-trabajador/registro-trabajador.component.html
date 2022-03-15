@@ -1,13 +1,14 @@
+<app-header></app-header>
 <form name="form" (ngSubmit)="f.form.valid && sendTrabajador()" #f="ngForm" novalidate class="sign-up-form">
   <div class="form-group">
     <div class="container-fluid" align = "center">
   <div class="mb-Trabajador">
     <label for="Nombre" class="form-label">Nombre</label>
-    <input type="text" 
-           class="form-control" 
-           id="name" 
+    <input type="text"
+           class="form-control"
+           id="name"
            name = "name"
-           placeholder="Ej: Aldo, Daniela, Gabriel, Oscar" 
+           placeholder="Ej: Aldo, Daniela, Gabriel, Oscar"
            [(ngModel)]="nuevoTrabajador.Nombre"
            #name = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -17,11 +18,11 @@
 
   <div class="mb-Apellido">
     <label for="Apellido" class="form-label">Apellido</label>
-    <input type="text" 
-           class="form-control" 
-           id="Apellido" 
+    <input type="text"
+           class="form-control"
+           id="Apellido"
            name = "Apellido"
-           placeholder="Ej: Cambronero, Brenes, González, Méndez" 
+           placeholder="Ej: Cambronero, Brenes, González, Méndez"
            [(ngModel)]="nuevoTrabajador.Apellido"
            #Apellido = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -30,8 +31,8 @@
 
   <div class="mb-Cedula">
     <label for="Cedula" class="form-label">Cédula</label>
-    <input type="number" 
-           class="form-control" 
+    <input type="number"
+           class="form-control"
            id="Cedula"
            name = "Cedula"
            [(ngModel)]="nuevoTrabajador.Cedula"
@@ -42,12 +43,12 @@
 
   <div class="mb-Contrasena">
     <label for="Contrasena" class="form-label">Contraseña</label>
-    <input class="form-control" 
-           type="password" 
-           name="Contrasena" 
+    <input class="form-control"
+           type="password"
+           name="Contrasena"
            id="Contrasena"
            name = "Contrasena"
-           placeholder="Escriba su contraseña" 
+           placeholder="Escriba su contraseña"
            [(ngModel)]="nuevoTrabajador.contrasena"
            #Contrasena = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -66,11 +67,11 @@
             required>
 
       <option value="Embarcador">Embarcador</option>
-      
+
       <option value="Scan">Scan</option>
-      
+
       <option value="Administrador">Administrador</option>
-      
+
       <option value="Recepcionista">Recepcionista</option>
 
       </select>
@@ -78,7 +79,7 @@
 
   <p>
 
-    
+
   </p>
 
   <button type="submit" class="button">Registrar</button>
@@ -86,3 +87,4 @@
     </div>
   </div>
 </form>
+<app-footer></app-footer>
