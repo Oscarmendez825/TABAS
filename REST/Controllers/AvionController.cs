@@ -46,8 +46,29 @@ namespace REST.Controllers
 
         // POST api/<AvionController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Estado Post(Avion avion)
         {
+            string jsonEscribir = "";
+            Estado estadotp = new Estado();
+            using(StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json);
+                foreach(Avion aviontp in aviones)
+                {
+                    if(aviontp.placaAvion == avion.placaAvion)
+                    {
+                        estadotp.estado = "ERROR";
+                        return estadotp;
+                    }
+                }
+                aviones.Add(avion);
+                string json2 = JsonConvert.SerializeObject(aviones);
+                jsonEscribir = json2;
+            }
+            System.IO.File.WriteAllText(path, jsonEscribir);
+            estadotp.estado = "OK";
+            return estadotp;
         }
 
 
