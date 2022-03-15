@@ -48,7 +48,7 @@ namespace AppTabas.Activities
                 string toastText;
                 var userIdInput = _userId.Text;
                 var userPasswordInput = _userPassword.Text;
-                bool isPassNum = int.TryParse(userPasswordInput, out int userPassNum);
+                bool isPassNum = int.TryParse(userIdInput, out int userIdNum);
 
                 if (userIdInput.Equals("") || userPasswordInput.Equals(""))
                 {
@@ -62,7 +62,7 @@ namespace AppTabas.Activities
 
                 else
                 {
-                    var user = new User(userPassNum, userPasswordInput);
+                    var user = new User(userIdNum, userPasswordInput);
                     var jsonResult = JsonConvert.SerializeObject(user);
 
                     using var webClient = new WebClient { BaseAddress = baseAddress };

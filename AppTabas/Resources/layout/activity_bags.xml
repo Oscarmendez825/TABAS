@@ -13,6 +13,8 @@
         android:layout_gravity="right"
         android:id="@+id/welcomeText"
         android:textColor="@color/primaryTextColor"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:text="@string/welcome"/>
 
 </LinearLayout>
