@@ -9,8 +9,8 @@ import { TrabajadorModel } from 'src/app/pages/models/trabajador-model.model';
     providedIn: 'root'
 })
 export class ApiGetService {
-    private baseUrl = "https://localhost:44374/api/Usuario";
-    private getTrabajadoresHistorial = `${this.baseUrl}\\Trabajadores`
+    private baseUrl = "https://localhost:44374/api";
+    private getTrabajadoresHistorial = `${this.baseUrl}\\Usuario/Trabajadores`
 
     constructor(private http: HttpClient) {
 

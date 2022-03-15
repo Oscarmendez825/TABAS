@@ -1,27 +1,81 @@
-<div class="container-fluid">
-  <div class="mb-Usuario">
-    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+<form name="form" (ngSubmit)="f.form.valid && sendMaleta()" #f="ngForm" novalidate class="sign-up-form">
+  <div class="form-group">
+    <div class="container-fluid" align = "center">
+  <div class="mb-NoMaleta">
+    <label for="NoMaleta" class="form-label">Número de maleta</label>
+    <input type="number" 
+           class="form-control" 
+           id="NoMaleta" 
+           name = "NoMaleta"
+           placeholder= "0, 1, 2, 3, 4..." 
+           [(ngModel)]="nuevaMaleta.numero_maleta"
+           #name = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required
+           />
   </div>
 
-  <div class="mb-Color">
-    <label for="exampleInputPassword1" class="form-label">Color</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+  <div class="mb-Cedula">
+    <label for="Cedula" class="form-label">Cédula</label>
+    <input type="number" 
+           class="form-control" 
+           id="Cedula"
+           name = "Cedula"
+           [(ngModel)]="nuevaMaleta.cedulaUsuario"
+           #Cedula = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Peso</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+  <div class="mb-Peso">
+    <label for="Peso" class="form-label">Peso</label>
+    <input class="form-control" 
+           type="number" 
+           name="Peso" 
+           id="Peso"
+           name = "Peso"
+           placeholder="0, 1, 2, 3, 4..." 
+           [(ngModel)]="nuevaMaleta.peso"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Costo</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+  <div class="mb-Clor">
+    <label for="Clor" class="form-label">Color</label>
+    <input class="form-control" 
+           type="text" 
+           name="Clor" 
+           id="Clor"
+           name = "Clor"
+           placeholder="Rojo, Negro, Morado, Azul, Blanco..." 
+           [(ngModel)]="nuevaMaleta.color"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
   </div>
 
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Numero de maleta</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+
+  <div class="mb-Costo">
+    <label for="Costo" class="form-label">Costo</label>
+    <input class="form-control" 
+           type="number" 
+           name="Costo" 
+           id="Costo"
+           name = "Costo"
+           placeholder="100, 200, 300, 400..." 
+           [(ngModel)]="nuevaMaleta.costo"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
   </div>
-  <button type="submit" class="btn btn-primary">Añadir</button>
-</div>
+  <p>
+
+    
+  </p>
+
+  <button type="submit" class="button">Registrar</button>
+
+    </div>
+  </div>
+</form>

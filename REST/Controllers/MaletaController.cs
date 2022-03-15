@@ -16,11 +16,11 @@ namespace REST.Controllers
     public class MaletaController : ControllerBase
     {
 
-        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\MALETAS.json";
-        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
+        //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\MALETAS.json";
+       // private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
 
-        //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\MALETAS.json";
-        //private string path2 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\MALETAS.json";
+        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         // GET: api/<MaletaController>
         [HttpGet("Maletas")]
@@ -57,31 +57,20 @@ namespace REST.Controllers
 
         // POST api/<MaletaController>
         [HttpPost]
-        public string PostRegistrar(Maleta maleta)
+        public Estado PostRegistrar(Maleta maleta)
         {
+            Estado estadotp = new Estado();
             string jsonEscribir = "";
-            bool flag = false;
-            using (StreamReader jsonStream = System.IO.File.OpenText(path2))
-            {
-                var json = jsonStream.ReadToEnd();
-                var usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
-                foreach (Usuario usuariotp in usuarios)
-                {
-                    if (usuariotp.Cedula == maleta.cedulaUsuario)
-                    {
-                        flag = true;
-                    }
-                }
-            }
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
                 var maletas = JsonConvert.DeserializeObject<List<Maleta>>(json);
                 foreach (Maleta maletatp in maletas)
                 {
-                    if ((maletatp.numero_maleta == maleta.numero_maleta) || (flag == false))
+                    if ((maletatp.numero_maleta == maleta.numero_maleta))
                     {
-                        return "ERROR";
+                        estadotp.estado = "ERROR";
+                        return estadotp;
                     }
                 }
                 maletas.Add(maleta);
@@ -89,7 +78,8 @@ namespace REST.Controllers
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
-            return "OK";
+            estadotp.estado = "OK";
+            return estadotp;
         }
 
     }
