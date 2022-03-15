@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<!--dimes for design 3-->
+    <dimen name="headerTextSize">35sp</dimen>
+	<dimen name="newsMoreTextSize">15sp</dimen>
+
+	<dimen name="leftMarginMenu">30dp</dimen>
+	<dimen name="editTextWidth">230dp</dimen>
+
+
+</resources>

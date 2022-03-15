@@ -1,4 +1,4 @@
-﻿namespace TABAS.APIModels
+﻿namespace AppTabas.APIModels
 {
     /// <summary>
     /// This class represents a user of the app.

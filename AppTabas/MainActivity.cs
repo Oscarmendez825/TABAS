@@ -1,26 +1,26 @@
 ﻿using Android.App;
 using Android.OS;
+using Android.Runtime;
 using AndroidX.AppCompat.App;
 using Android.Widget;
 using Newtonsoft.Json;
+using AppTabas.APIModels;
 using System.Net;
-using TABAS.APIModels;
-using System;
 
-namespace TABAS
+namespace AppTabas
 {
     /// <summary>
     /// This class represents the first view seen when the app is opened.
     /// It inherits from the base class for Android activities
     /// </summary>
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        private Button _signInButton;
+        public const string Ipv4 = "192.168.0.11";
         private EditText _userId;
         private EditText _userPassword;
+        private Button _signInButton;
         private Toast _toast;
-        public const string Ipv4 = "192.168.0.11";
 
         /// <summary>
         /// This method is called when the activity is starting.
@@ -30,20 +30,20 @@ namespace TABAS
         /// supplied if the activity is being re-initialized after previously being shut down. </param>
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(savedInstanceState); 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.activity_main);
 
             _userId = FindViewById<EditText>(Resource.Id.signInId);
             _userPassword = FindViewById<EditText>(Resource.Id.signInPassword);
             _signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
-            string toastText;
 
             // Manages the user info entered for the sign in
             _signInButton.Click += (sender, args) =>
             {
+                string toastText;
                 var userIdInput = _userId.Text;
                 var userPasswordInput = _userPassword.Text;
 
@@ -63,21 +63,27 @@ namespace TABAS
                     var send = webClient.UploadString(url, jsonResult);
 
                     var response = send;
-                    toastText = response;
 
-                    if (response.Equals("OK")) {
+                    if (response.Equals("OK"))
+                    {
                         toastText = "Sesión iniciada";
                     }
                     else
                     {
-                        toastText = "La cédula o la contraseña son incorrectas.";
+                        toastText = "La cédula o la contraseña son incorrectas";
                     }
 
                 }
                 _toast = Toast.MakeText(this, toastText, ToastLength.Short);
                 _toast.Show();
             };
+
         }
-           
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }
