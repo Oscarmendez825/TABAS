@@ -1,1 +1,1 @@
-[{"cedulaUsuario":123,"peso":55,"costo":1250,"numero_maleta":1},{"cedulaUsuario":123,"peso":55,"costo":1250,"numero_maleta":2},{"cedulaUsuario":123,"peso":17,"costo":1700,"numero_maleta":3},{"cedulaUsuario":456,"peso":17,"costo":1700,"numero_maleta":4}]
+[{"numero_maleta":1,"cedulaUsuario":879,"peso":455,"color":"Azul","aceptada":true,"costo":100},{"numero_maleta":2,"cedulaUsuario":588,"peso":989,"color":"Negro","aceptada":true,"costo":50}]

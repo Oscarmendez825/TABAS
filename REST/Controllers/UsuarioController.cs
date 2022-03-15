@@ -14,7 +14,7 @@ namespace REST.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         /**
          * Metodo que retorna la informacion de todos los usuarios
@@ -60,9 +60,10 @@ namespace REST.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public string PostRegistrar(Usuario usuario)
+        public Estado PostRegistrar(Usuario usuario)
         {
             string jsonEscribir = "";
+            Estado estadotp = new Estado();
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
@@ -71,7 +72,8 @@ namespace REST.Controllers
                 {
                     if (usuariotp.Cedula == usuario.Cedula)
                     {
-                        return "ERROR";
+                        estadotp.estado = "ERROR";
+                        return estadotp;
                     }
                 }
                 usuarios.Add(usuario);
@@ -79,7 +81,8 @@ namespace REST.Controllers
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
-            return "OK";
+            estadotp.estado = "OK";
+            return estadotp;
         }
 
         /**
@@ -88,8 +91,9 @@ namespace REST.Controllers
 
         //POST: api/<ValuesController>/IniciarSesion
         [HttpPost("IniciarSesion")]
-        public string PostIniciarSesion(Usuario usuario)
+        public Estado PostIniciarSesion(Usuario usuario)
         {
+            Estado estadotp = new Estado();
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
@@ -100,12 +104,14 @@ namespace REST.Controllers
                     {
                         if (usuariotp.contrasena == usuario.contrasena)
                         {
-                            return "OK";
+                            estadotp.estado = "OK";
+                            return estadotp;
                         }
                     }
                 }
             }
-            return "ERROR";
+            estadotp.estado = "ERROR";
+            return estadotp;
         }
 
 

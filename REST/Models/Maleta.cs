@@ -7,10 +7,18 @@ namespace REST.Models
 {
     public class Maleta
     {
-        public int cedulaUsuario { get; set; }
-        public int peso { get; set; }
-        public int costo { get; set; }
+        //Primary Key
         public int numero_maleta { get; set; }
+
+        //Forean Keys
+        public int cedulaUsuario { get; set; }
+
+        //Entity attributes
+        public int peso { get; set; }
+        public string color { get; set; }
+        public bool aceptada { get; set; }
+        public int costo { get; set; }
+        
 
 
 
