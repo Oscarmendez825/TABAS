@@ -91,8 +91,9 @@ namespace REST.Controllers
 
         //POST: api/<ValuesController>/IniciarSesion
         [HttpPost("IniciarSesion")]
-        public string PostIniciarSesion(Usuario usuario)
+        public Estado PostIniciarSesion(Usuario usuario)
         {
+            Estado estadotp = new Estado();
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
                 var json = jsonStream.ReadToEnd();
@@ -103,12 +104,14 @@ namespace REST.Controllers
                     {
                         if (usuariotp.contrasena == usuario.contrasena)
                         {
-                            return "OK";
+                            estadotp.estado = "OK";
+                            return estadotp;
                         }
                     }
                 }
             }
-            return "ERROR";
+            estadotp.estado = "ERROR";
+            return estadotp;
         }
 
 

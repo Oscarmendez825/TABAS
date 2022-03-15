@@ -57,9 +57,10 @@ namespace REST.Controllers
 
         // POST api/<BagCartController>
         [HttpPost]
-        public string Post( BagCart bagcart)
+        public Estado Post( BagCart bagcart)
         {
             string jsonEscribir = "";
+            Estado estadotp = new Estado();
             bool flag = false;
             using(StreamReader jsonStream = System.IO.File.OpenText(path2))
             {
@@ -82,7 +83,8 @@ namespace REST.Controllers
                 {
                     if((bagcarttp.identificador_BC == bagcart.identificador_BC) || (flag == false))
                     {
-                        return "ERROR";
+                        estadotp.estado = "ERROR";
+                        return estadotp;
                     }
                 }
 
@@ -92,7 +94,8 @@ namespace REST.Controllers
             }
 
             System.IO.File.WriteAllText(path, jsonEscribir);
-            return "OK";
+            estadotp.estado = "OK";
+            return estadotp; ;
         }
 
     }

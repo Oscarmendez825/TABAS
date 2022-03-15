@@ -56,9 +56,10 @@ namespace REST.Controllers
 
         // POST api/<VueloController>
         [HttpPost]
-        public string Post(Vuelo vuelo)
+        public Estado Post(Vuelo vuelo)
         {
             String jsonEscribir = "";
+            Estado estadotp = new Estado();
             bool flag1 = false;
             bool flag2 = false;
             using (StreamReader jsonStream = System.IO.File.OpenText(path2))
@@ -95,7 +96,8 @@ namespace REST.Controllers
                 {
                     if((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) ||(flag2 == false))
                     {
-                        return "ERROR";
+                        estadotp.estado = "ERROR";
+                        return estadotp;
                     }
                 }
 
@@ -104,7 +106,8 @@ namespace REST.Controllers
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
-            return "OK";
+            estadotp.estado = "OK";
+            return estadotp;
         }
 
     }
