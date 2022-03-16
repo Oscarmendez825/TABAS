@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using REST.Models;
 using Newtonsoft.Json;
-using System.IO;
-
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,7 +10,7 @@ namespace REST.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         /**
          * Metodo que retorna la informacion de todos los usuarios

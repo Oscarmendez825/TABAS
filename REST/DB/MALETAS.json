@@ -1,1 +1,1 @@
-[{"numero_maleta":1,"cedulaUsuario":879,"peso":455,"color":"Azul","aceptada":true,"costo":100},{"numero_maleta":2,"cedulaUsuario":588,"peso":989,"color":"Negro","aceptada":true,"costo":50}]
+[{"numero_maleta":1,"cedulaUsuario":879,"bagcartId":0,"numVuelo":0,"peso":20,"color":"Azul","aceptada":false,"costo":35,"scanId":0}]
