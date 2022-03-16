@@ -11,11 +11,11 @@ namespace REST.Controllers
     public class BagCartController : ControllerBase
     {
 
-        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
-        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
+        //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
+        //private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
 
-        //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\BAGCART.json";
-        //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
+        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         // GET: api/<BagCartController>
         [HttpGet("Bagcarts")]

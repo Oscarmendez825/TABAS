@@ -10,13 +10,13 @@ namespace REST.Controllers
     [ApiController]
     public class VueloController : ControllerBase
     {
-        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
-        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
-        private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
+       // private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
+        //private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
+        //private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
 
-        //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\VUELOS.json";
-        //private string path2 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\BAGCART.json";
-        //private string path3 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\AVION.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\VUELOS.json";
+        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
+        private string path3 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\AVION.json";
 
         // GET: api/<VueloController>
         [HttpGet("Vuelos")]
