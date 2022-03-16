@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_bk">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="@dimen/leftMarginMenu"
+        android:text="@string/tabas"
+        style="@style/header"/>
+
+    <EditText
+        android:layout_width="@dimen/editTextWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/leftMarginMenu"
+        android:id="@+id/signInId"
+        style="@style/modifiedEditText"
+        android:hint="@string/cedula_hint"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:layout_width="@dimen/editTextWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/leftMarginMenu"
+        android:id="@+id/signInPassword"
+        style="@style/modifiedEditText"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"/>
+
+    <android.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="right"
+        android:id="@+id/btnSignIn"
+        android:text="@string/login"
+        style="@style/loginButton"/>
+
+</LinearLayout> 

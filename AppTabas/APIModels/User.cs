@@ -1,4 +1,4 @@
-﻿namespace TABAS.APIModels
+﻿namespace AppTabas.APIModels
 {
     /// <summary>
     /// This class represents a user of the app.
@@ -8,7 +8,9 @@
     {
         public int Cedula;
         public string contrasena;
-
+        public string Nombre = "";
+        public string Apellido = "";
+        public string rol = "";
 
         /// <summary>
         /// Constructor for the User class
