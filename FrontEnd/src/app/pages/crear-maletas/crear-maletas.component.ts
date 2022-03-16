@@ -16,10 +16,13 @@ export class CrearMaletasComponent implements OnInit {
   {
     numero_maleta:0,
     cedulaUsuario:0,
+    bagcartId:0,
+    numVuelo:0,
     peso:0,
     color:'',
     aceptada: true,
-    costo:0
+    costo:0,
+    scanId:0
   }
 
   estadoRes: EstadoModel = {
