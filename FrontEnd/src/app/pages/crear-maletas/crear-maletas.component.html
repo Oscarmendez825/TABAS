@@ -1,0 +1,89 @@
+
+<app-header></app-header>
+<form name="form" (ngSubmit)="f.form.valid && sendMaleta()" #f="ngForm" novalidate class="sign-up-form">
+  <div class="form-group">
+    <div class="container-fluid" align = "center">
+  <div class="mb-NoMaleta">
+    <label for="NoMaleta" class="form-label">Número de maleta</label>
+    <input type="number" 
+           class="form-control" 
+           id="NoMaleta" 
+           name = "NoMaleta"
+           placeholder= "0, 1, 2, 3, 4..." 
+           [(ngModel)]="nuevaMaleta.numero_maleta"
+           #name = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required
+           />
+  </div>
+
+  <div class="mb-Cedula">
+    <label for="Cedula" class="form-label">Cédula</label>
+    <input type="number" 
+           class="form-control" 
+           id="Cedula"
+           name = "Cedula"
+           [(ngModel)]="nuevaMaleta.cedulaUsuario"
+           #Cedula = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
+  </div>
+
+  <div class="mb-Peso">
+    <label for="Peso" class="form-label">Peso</label>
+    <input class="form-control" 
+           type="number" 
+           name="Peso" 
+           id="Peso"
+           name = "Peso"
+           placeholder="0, 1, 2, 3, 4..." 
+           [(ngModel)]="nuevaMaleta.peso"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
+  </div>
+
+  <div class="mb-Clor">
+    <label for="Clor" class="form-label">Color</label>
+    <input class="form-control" 
+           type="text" 
+           name="Clor" 
+           id="Clor"
+           name = "Clor"
+           placeholder="Rojo, Negro, Morado, Azul, Blanco..." 
+           [(ngModel)]="nuevaMaleta.color"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
+  </div>
+
+
+  <div class="mb-Costo">
+    <label for="Costo" class="form-label">Costo</label>
+
+    <input class="form-control" 
+           type="number" 
+           name="Costo" 
+           id="Costo"
+           name = "Costo"
+           placeholder="100, 200, 300, 400..." 
+           [(ngModel)]="nuevaMaleta.costo"
+           #Peso = "ngModel"
+           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
+           required/>
+  </div>
+  <p>
+
+
+    
+
+  </p>
+
+  <button type="submit" class="button">Registrar</button>
+
+    </div>
+  </div>
+</form>
+
+<app-footer></app-footer>
+

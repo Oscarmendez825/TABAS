@@ -1,0 +1,9 @@
+h1{
+  background-color: #03a9f4;
+}
+.navbar-light{
+  background-color: rgb(160, 151, 32);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  padding: 10px;
+  font-size: medium;
+}
