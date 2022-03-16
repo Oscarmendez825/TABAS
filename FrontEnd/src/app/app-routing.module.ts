@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: "reportes", component: ReportesComponent},
   {path: "registro", component: RegistroTrabajadorComponent},
   {path: "historialTrabajadores", component: HistorialTrabajadoresComponent},
-  {path: "**", redirectTo: "home", pathMatch:"full"},
+  {path: "**", redirectTo: "login", pathMatch:"full"},
 ];
 
 @NgModule({

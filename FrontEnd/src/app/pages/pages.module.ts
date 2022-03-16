@@ -7,10 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { CrearMaletasComponent } from './crear-maletas/crear-maletas.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { RegistroTrabajadorComponent } from './registro-trabajador/registro-trabajador.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { FormsModule} from "@angular/forms";
+import { HttpClient, HttpClientModule} from "@angular/common/http";
 import { HistorialTrabajadoresComponent } from './historialTrabajadores/historial-trabajadores/historial-trabajadores.component'
-
+import { RouterModule } from '@angular/router';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,16 @@ import { HistorialTrabajadoresComponent } from './historialTrabajadores/historia
     ReportesComponent,
     RegistroTrabajadorComponent,
     HistorialTrabajadoresComponent,
-    
+
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    
+    RouterModule,
+    ComponentsModule
   ]
 })
-export class PagesModule { 
-  
+export class PagesModule {
+
 }

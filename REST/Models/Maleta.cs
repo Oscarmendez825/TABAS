@@ -13,6 +13,10 @@ namespace REST.Models
         //Forean Keys
         public int cedulaUsuario { get; set; }
 
+        public int BC_ID { get; set; }
+
+        public int numVuelo { get; set; }
+
         //Entity attributes
         public int peso { get; set; }
         public string color { get; set; }
