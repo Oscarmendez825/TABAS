@@ -20,6 +20,18 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 
+	<style name="subheader">
+		<item name="android:textColor">@color/primaryTextColor</item>
+		<item name="android:textSize">@dimen/subHeaderTextSize</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<style name="body">
+		<item name="android:textColor">@color/primaryTextColor</item>
+		<item name="android:textSize">@dimen/bodyTextSize</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
 	<style name="modifiedEditText">
 		<item name="android:textSize">@dimen/newsMoreTextSize</item>
 		<item name="android:backgroundTint">@color/primaryTextColor</item>
