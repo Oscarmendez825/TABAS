@@ -19,12 +19,12 @@ namespace REST.Controllers
         //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\MALETAS.json";
        // private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
 
-        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\MALETAS.json";
-        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\MALETAS.json";
+        private string path2 = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         // GET: api/<MaletaController>
         [HttpGet("Maletas")]
-        public string GetUsuarios()
+        public string GetMaletas()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {

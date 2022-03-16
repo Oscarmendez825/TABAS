@@ -70,9 +70,9 @@ namespace AppTabas.Activities
                     webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
                     var send = webClient.UploadString(url, jsonResult);
 
-                    var response = send;
+                    var state = JsonConvert.DeserializeObject<State>(send);
 
-                    if (response.Equals("OK"))
+                    if (state.estado.Equals("OK"))
                     {
                         toastText = "Sesión iniciada";
 
