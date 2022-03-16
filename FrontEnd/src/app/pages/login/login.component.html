@@ -5,8 +5,14 @@
     </div>
     <strong>Bienvenidos a TecAirlines!</strong>
     <form (submit)="loginUser($event)">
-      <input type="text" id="cedula" class="fadeIn second" name="login" placeholder="Cedula">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+      <input type="number" id="cedula" class="fadeIn second" name="login" placeholder="Cédula" required>
+      <p>
+
+      </p>
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" required>
+      <p>
+        
+      </p>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
   </div>

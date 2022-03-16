@@ -1,9 +1,13 @@
 div.container-fluid {
-  background-color: rgb(233, 224, 210);
+  background-color: rgb(224, 192, 141);
   box-shadow: black;
   padding: 16px;
   border: 1 px solid,black;
   min-height: 590px;
+}
+div,p{
+  background-color: rgb(224, 192, 141);
+  color: rgb(224, 192, 141)
 }
 input{
   background-color: rgb(255, 255, 255);
