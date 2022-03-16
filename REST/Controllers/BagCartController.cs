@@ -19,7 +19,7 @@ namespace REST.Controllers
 
         // GET: api/<BagCartController>
         [HttpGet("Bagcarts")]
-        public string GetUsuarios()
+        public string GetBagCarts()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -30,7 +30,7 @@ namespace REST.Controllers
 
         // GET api/<BagCartController>/5
         [HttpGet("{identificador_BC}")]
-        public string Get(string identificador_BC)
+        public string GetBagCart(string identificador_BC)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -52,7 +52,7 @@ namespace REST.Controllers
 
         // POST api/<BagCartController>
         [HttpPost]
-        public Estado Post( BagCart bagcart)
+        public Estado agregarBagCart(BagCart bagcart)
         {
             string jsonEscribir = "";
             Estado estadotp = new Estado();

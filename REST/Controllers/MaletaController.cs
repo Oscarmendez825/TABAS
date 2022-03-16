@@ -29,7 +29,7 @@ namespace REST.Controllers
 
         // GET api/<MaletaController>
         [HttpGet("{numero_maleta}")]
-        public string Get(string numero_maleta)
+        public string GetMaleta(string numero_maleta)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -71,7 +71,7 @@ namespace REST.Controllers
 
         // POST api/<MaletaController>
         [HttpPost]
-        public Estado PostRegistrar(Maleta maleta)
+        public Estado addMaleta(Maleta maleta)
         {
             Estado estadotp = new();
             string jsonEscribir = "";
