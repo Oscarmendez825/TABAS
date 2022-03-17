@@ -7,25 +7,38 @@
     a
   </p>
 </div>
-<div class="container-fluid" align = "center">
-  <div class="mb-Usuario">
-    <label for="exampleInputEmail1" class="form-label">Número de Vuelo</label>
-    <select class="form-control"  required>
-      <option *ngFor="let lista of vuelos; index as i">{{ lista.numVuelo}}</option>
+<form name="form" (ngSubmit)="f.form.valid && asignarBC()" #f="ngForm" novalidate class="sign-up-form">
+  <div class="container-fluid" align = "center">
+  <div class="mb-Vuelo">
+    <label for="Vuelo" class="form-label">Número de Vuelo</label>
+    <select class="form-control"
+                name="nVuelo"
+                id="nVuelo"
+                [(ngModel)]="vueloTemp.numVuelo"
+                #nVuelo = "ngModel"
+                required>
+      <option *ngFor="let lista of vuelos; index as i" value="{{ lista.numVuelo}}">
+        {{ lista.numVuelo}}
+      </option>
     </select>
   </div>
 
   <div class="mb-Color">
-    <label for="exampleInputPassword1" class="form-label">Identificador del BagCart</label>
-    <select class="form-control"required>
-      <option  *ngFor="let lista2 of BC; index as i" >{{ lista2.identificador_BC}}</option>
+    <label for="BAGCART" class="form-label">Identificador del BagCart</label>
+    <select class="form-control"
+                name="nBC"
+                id="nBC"
+                [(ngModel)]="vueloTemp.BC_ID"
+                #nBC = "ngModel"
+                required>
+      <option  *ngFor="let lista2 of BC; index as i" value="{{ lista2.identificador_BC}}">{{ lista2.identificador_BC}}</option>
     </select>
   </div>
  <p>
 
   
  </p>
-
   <button type="submit" class="btn btn-primary">Asignar</button>
-</div>
+  </div>
+</form>
 <app-footer></app-footer>

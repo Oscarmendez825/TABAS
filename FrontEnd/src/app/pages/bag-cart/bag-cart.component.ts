@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiGetService } from 'src/app/components/getService/api-get-service';
+import { ApiPostService } from 'src/app/components/postService/api-post-service';
 import { BagCartModel } from '../models/bag-cart-model';
+import { EstadoModel } from '../models/estado-model';
 import { VueloModel } from '../models/vuelo-model';
 
 @Component({
@@ -12,7 +14,21 @@ export class BagCartComponent implements OnInit {
 
   vuelos: VueloModel[] = [];
   BC: BagCartModel[] = [];
-  constructor(private apiService:ApiGetService) { }
+
+  vueloTemp: VueloModel = {
+    numVuelo: 0,
+    BC_ID:0,
+    placaAvion: 0,
+    capacidad: 0,
+    numMaletas: 0,
+    origen: '',
+    destino: ''
+
+  }
+  estadoRes: EstadoModel = {
+    estado:""
+  }
+  constructor(private apiService:ApiGetService, private apiService1: ApiPostService) { }
 
   ngOnInit(): void {
     this.getElements();
@@ -20,6 +36,7 @@ export class BagCartComponent implements OnInit {
   }
 
   public getElements(){
+
     this.apiService.getVuelos().subscribe(
       res => {
         this.vuelos = res;
@@ -39,5 +56,17 @@ export class BagCartComponent implements OnInit {
       }
 
     );
+  }
+  public asignarBC(){
+    this.apiService1.asignarBagCart(this.vueloTemp).subscribe(
+      res =>{
+        this.estadoRes = res;
+        if(this.estadoRes.estado == "OK"){
+          location.reload();
+        }else{
+          alert("Hubo un problema al realizar su registro");
+        }    
+      }
+  );
   }
 }
