@@ -9,7 +9,7 @@ import { MaletaModel } from 'src/app/pages/models/maleta-model';
     providedIn: 'root'
 })
 export class ApiPostService {
-    private baseUrl = "https://localhost:44374/api";
+    private baseUrl = "https://localhost:44324/api";
     private regTrab = `${this.baseUrl}\\Usuario`
     private regMal = `${this.baseUrl}\\Maleta`
     private iniciarSesion = `${this.baseUrl}\\Usuario/IniciarSesion`
