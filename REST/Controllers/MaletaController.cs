@@ -88,6 +88,7 @@ namespace REST.Controllers
                     }
                 }
                 maleta.calcCosto();
+                maleta.estadoAceptacion(); 
                 maletas.Add(maleta);
                 string json2 = JsonConvert.SerializeObject(maletas);
                 jsonEscribir = json2;

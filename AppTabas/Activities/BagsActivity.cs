@@ -5,6 +5,7 @@ using System.Net;
 using AppTabas.APIModels;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace AppTabas.Activities
 {
@@ -20,6 +21,8 @@ namespace AppTabas.Activities
         private User _loggedUser;
         private TextView _welcomeText;
         private Spinner _baggageSpinner;
+        private Button _btnScan;
+        private List<Bag> _bagList;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,6 +34,7 @@ namespace AppTabas.Activities
             // Get widgets from layout xml
             _welcomeText = FindViewById<TextView>(Resource.Id.welcomeText);
             _baggageSpinner = FindViewById<Spinner>(Resource.Id.baggageSpinner);
+            _btnScan = FindViewById<Button>(Resource.Id.btnScan);
 
             // Get logged user's info
             _loggedWorkerId = Intent.GetStringExtra("WorkerId");
@@ -40,28 +44,72 @@ namespace AppTabas.Activities
             var send = webClient.DownloadString(url);
 
             _loggedUser = JsonConvert.DeserializeObject<User>(send);
-            _welcomeText.Text = "Bienvenid@, " + _loggedUser.Nombre + " " + _loggedUser.Apellido;
+            _welcomeText.Text = _loggedUser.Nombre + " " + _loggedUser.Apellido;
+
 
             // Manage baggage spinner
-            _baggageSpinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-            var adapter = ArrayAdapter.CreateFromResource(
-                    this, Resource.Array.planets_array, Android.Resource.Layout.SimpleSpinnerItem);
+            url = "Maleta/Maletas";
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+            send = webClient.DownloadString(url);
 
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            _bagList = JsonConvert.DeserializeObject<List<Bag>>(send);
+            List<string> bagIdList = new List<string>();
+
+            //var bagCartList = JsonConvert.DeserializeObject<List<BagCart>>(send);
+            //List<string> bagCartIdList = new List<string>();
+
+            foreach (Bag bag in _bagList)
+            {
+                // Show bag to worker only if it hasn't been assigned to a bagcart yet
+                if (bag.bagcartId == 0)
+                {
+                    bagIdList.Add("Maleta # " + bag.numero_maleta.ToString());
+                }
+            };
+
+            /*foreach (BagCart bagCart in bagCartList)
+            {
+                bagCartIdList.Add("BagCart # " + bagCart.identificador_BC.ToString());
+            }*/
+
+            var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, bagIdList);
             _baggageSpinner.Adapter = adapter;
+
+            //var adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, bagCartIdList);
+
+            // Manage buttons
+            _btnScan.Click += (sender, args) =>
+            {
+                scanBag();
+            };
+
 
         }
 
         /// <summary>
-        /// Notifies the application when an item has been selected
+        /// Shows the selected bag's scan status when the button is tapped
         /// </summary>
-        /// <param name="sender"> Casted to the spinner when its items are selected </param>
-        /// <param name="e"></param>
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        private void scanBag()
         {
-            Spinner spinner = (Spinner)sender;
-            string toast = string.Format("The planet is {0}", spinner.GetItemAtPosition(e.Position));
-            Toast.MakeText(this, toast, ToastLength.Short).Show();
+            string toastText;
+            string selected = _baggageSpinner.SelectedItem.ToString();
+            selected = selected.Remove(0, 8); //Remove unnecessary text
+
+            foreach (Bag bag in _bagList)
+            {
+                if (bag.numero_maleta == Int32.Parse(selected))
+                {
+                    if (bag.aceptada)
+                    {
+                        toastText = "La maleta ha pasado el escaneo satisfactoriamente";
+                    }
+                    else
+                    {
+                        toastText = "La maleta ha sido rechazada por el escaneo";
+                    }
+                    Toast.MakeText(this, toastText, ToastLength.Short).Show();
+                }
+            }
         }
     }
 }
