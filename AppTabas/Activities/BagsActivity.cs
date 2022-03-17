@@ -136,11 +136,11 @@ namespace AppTabas.Activities
             string selectedBag = _baggageSpinner.SelectedItem.ToString().Remove(0, 8);
             string selectedBagCart = _bagCartSpinner.SelectedItem.ToString().Remove(0, 9);
 
-            Bag newBag = new Bag(Int32.Parse(selectedBag), Int32.Parse(selectedBagCart));
+            Bag newBag = new Bag(Int32.Parse(selectedBag), Int32.Parse(selectedBagCart), _loggedUser.Cedula);
             var bagJson = JsonConvert.SerializeObject(newBag);
 
             using var webClient = new WebClient { BaseAddress = MainActivity.baseAddress };
-            var url = "Maleta/AsignarBCMlaeta";
+            var url = "Maleta/AsignarBCMaleta";
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
             var send = webClient.UploadString(url, bagJson);
 
