@@ -38,7 +38,7 @@
   </div>
 
   <div class="mb-Peso">
-    <label for="Peso" class="form-label">Peso</label>
+    <label for="Peso" class="form-label">Peso (kg)</label>
     <input class="form-control" 
            type="number" 
            name="Peso" 
@@ -60,22 +60,6 @@
            name = "Clor"
            placeholder="Rojo, Negro, Morado, Azul, Blanco..." 
            [(ngModel)]="nuevaMaleta.color"
-           #Peso = "ngModel"
-           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
-           required/>
-  </div>
-
-
-  <div class="mb-Costo">
-    <label for="Costo" class="form-label">Costo</label>
-
-    <input class="form-control" 
-           type="number" 
-           name="Costo" 
-           id="Costo"
-           name = "Costo"
-           placeholder="100, 200, 300, 400..." 
-           [(ngModel)]="nuevaMaleta.costo"
            #Peso = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
            required/>
