@@ -1,19 +1,31 @@
 <app-header></app-header>
+<div>
+  <p style="color: rgb(224, 192, 141)">
+   a 
+  </p>
+  <p>
+    a
+  </p>
+</div>
 <div class="container-fluid" align = "center">
   <div class="mb-Usuario">
     <label for="exampleInputEmail1" class="form-label">Número de Vuelo</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <select class="form-control"  required>
+      <option *ngFor="let lista of vuelos; index as i">{{ lista.numVuelo}}</option>
+    </select>
   </div>
 
   <div class="mb-Color">
     <label for="exampleInputPassword1" class="form-label">Identificador del BagCart</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+    <select class="form-control"required>
+      <option  *ngFor="let lista2 of BC; index as i" >{{ lista2.identificador_BC}}</option>
+    </select>
   </div>
  <p>
 
   
  </p>
 
-  <button type="submit" class="btn btn-primary">Añadir</button>
+  <button type="submit" class="btn btn-primary">Asignar</button>
 </div>
 <app-footer></app-footer>

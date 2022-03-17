@@ -15,7 +15,7 @@ namespace REST.Controllers
 
         // GET: api/<AvionController>
         [HttpGet("Aviones")]
-        public string GetUsuarios()
+        public string GetAviones()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -46,7 +46,7 @@ namespace REST.Controllers
 
         // POST api/<AvionController>
         [HttpPost]
-        public Estado Post(Avion avion)
+        public Estado AgregarAvion(Avion avion)
         {
             string jsonEscribir = "";
             Estado estadotp = new Estado();

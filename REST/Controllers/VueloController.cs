@@ -10,17 +10,17 @@ namespace REST.Controllers
     [ApiController]
     public class VueloController : ControllerBase
     {
-        private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
-        private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
-        private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
+        // private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
+        //private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
+        //private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
 
-        //private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\VUELOS.json";
-        //private string path2 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\BAGCART.json";
-        //private string path3 = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\AVION.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\VUELOS.json";
+        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
+        private string path3 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\AVION.json";
 
         // GET: api/<VueloController>
         [HttpGet("Vuelos")]
-        public string GetUsuarios()
+        public string getVuelos()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -31,7 +31,7 @@ namespace REST.Controllers
 
         // GET api/<VueloController>/5
         [HttpGet("{numVuelo}")]
-        public string Get(string numVuelo)
+        public string getVuelo(string numVuelo)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -51,7 +51,7 @@ namespace REST.Controllers
 
         // POST api/<VueloController>
         [HttpPost]
-        public Estado Post(Vuelo vuelo)
+        public Estado agregarVuelo(Vuelo vuelo)
         {
             String jsonEscribir = "";
             Estado estadotp = new Estado();
@@ -61,7 +61,7 @@ namespace REST.Controllers
             {
                 var json = jsonStream.ReadToEnd();
                 var bagcarts = JsonConvert.DeserializeObject<List<BagCart>>(json);
-                foreach(BagCart bagcarttp in bagcarts)
+                foreach (BagCart bagcarttp in bagcarts)
                 {
                     if (bagcarttp.identificador_BC == vuelo.BC_ID)
                     {
@@ -87,9 +87,9 @@ namespace REST.Controllers
             {
                 var json = jsonStream.ReadToEnd();
                 var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
-                foreach(Vuelo vuelotp in vuelos)
+                foreach (Vuelo vuelotp in vuelos)
                 {
-                    if((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) ||(flag2 == false))
+                    if ((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) || (flag2 == false))
                     {
                         estadotp.estado = "ERROR";
                         return estadotp;
@@ -105,6 +105,42 @@ namespace REST.Controllers
             return estadotp;
         }
 
+
+        [HttpPost ("AsignarBCVuelo")]
+        public Estado asignarBagCart(Vuelo vuelo)
+        {
+            bool flag = false;
+            Estado estadotp = new();
+            string jsonEscribir = "";
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
+                foreach (Vuelo vuelotp in vuelos)
+                {
+                    if ((vuelotp.numVuelo == vuelo.numVuelo))
+                    {
+                        vuelotp.BC_ID = vuelo.BC_ID;
+                        flag = true;
+                        break;
+                    }
+                }
+                string json2 = JsonConvert.SerializeObject(vuelos);
+                jsonEscribir = json2;
+            }
+            if (flag == true)
+            {
+                System.IO.File.WriteAllText(path, jsonEscribir);
+                estadotp.estado = "OK";
+                return estadotp;
+            }
+            else
+            {
+                estadotp.estado = "ERROR";
+                return estadotp;
+            }
+
+        }
     }
 
 }

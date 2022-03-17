@@ -10,7 +10,7 @@ namespace REST.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         /**
          * Metodo que retorna la informacion de todos los usuarios
@@ -18,7 +18,7 @@ namespace REST.Controllers
 
         // GET: api/<ValuesController>/Trabajadores
         [HttpGet("Trabajadores")]
-        public string GetUsuarios()
+        public string getTrabajadores()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -33,7 +33,7 @@ namespace REST.Controllers
 
         // GET api/<ValuesController>/Trabajadores/{cedula}
         [HttpGet("Trabajadores/{cedula}")]
-        public string GetUsuario(string cedula)
+        public string getTrabajador(string cedula)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
@@ -56,7 +56,7 @@ namespace REST.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public Estado PostRegistrar(Usuario usuario)
+        public Estado addTrabajador(Usuario usuario)
         {
             string jsonEscribir = "";
             Estado estadotp = new Estado();
@@ -87,7 +87,7 @@ namespace REST.Controllers
 
         //POST: api/<ValuesController>/IniciarSesion
         [HttpPost("IniciarSesion")]
-        public Estado PostIniciarSesion(Usuario usuario)
+        public Estado IniciarSesion(Usuario usuario)
         {
             Estado estadotp = new Estado();
             using (StreamReader jsonStream = System.IO.File.OpenText(path))

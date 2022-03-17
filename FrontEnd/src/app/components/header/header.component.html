@@ -1,36 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <div class="container-fluid">
-
-    <a class="navbar-brand" href="/home">TecAirlines</a>
-
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-
-        <li class="nav-CrearMaletas">
-          <a class="nav-link active" aria-current="page" href="/maletas">Crear maletas</a>
-        </li>
-
-        <li class="nav-BagCart">
-          <a class="nav-link active" aria-current="page" href="/BagCart">Asignar BagCart</a>
-        </li>
-
-        <li class="nav-Reportes">
-          <a class="nav-link active" aria-current="page" href="/reportes">ReportesPDF</a>
-        </li>
-
-        <li class="nav-información">
-          <a class="nav-link active" aria-current="page" href="/informacion">Ver información</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link active" aria-current="page" href="/registro">Registrar Trabajador</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link active" aria-current="page" href="/historialTrabajadores">Historial Trabajadores</a>
-        </li>
-      </ul>
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
+    <div class="container">
+      <a class="navbar-brand" href="/home"><span style="color: #5e9693;">Tec</span><span style="color: #fff;">Airlines</span></a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="/registro">Registrar trabajador</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/historialTrabajadores">Planilla de trabajadores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/maletas">Registrar maleta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/BagCart">Asignar BagCart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reportes">Reportes</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+
+</header>
