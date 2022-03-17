@@ -97,5 +97,41 @@ namespace REST.Controllers
             return estadotp;
         }
 
+
+        [HttpPost]
+        public Estado asignarBagCart(Maleta maleta) {
+            bool flag = false;
+            Estado estadotp = new();
+            string jsonEscribir = "";
+            using (StreamReader jsonStream = System.IO.File.OpenText(path))
+            {
+                var json = jsonStream.ReadToEnd();
+                var maletas = JsonConvert.DeserializeObject<List<Maleta>>(json);
+                foreach (Maleta maletatp in maletas)
+                {
+                    if ((maletatp.numero_maleta == maleta.numero_maleta))
+                    {
+                        maletatp.bagcartId = maleta.bagcartId;
+                        flag = true;
+                        break;
+                    }
+                }
+                string json2 = JsonConvert.SerializeObject(maletas);
+                jsonEscribir = json2;
+            }
+            if (flag == true)
+            {
+                System.IO.File.WriteAllText(path, jsonEscribir);
+                estadotp.estado = "OK";
+                return estadotp;
+            }
+            else {
+                estadotp.estado = "ERROR";
+                return estadotp;
+            }
+
+        }
     }
+    
+
 }
