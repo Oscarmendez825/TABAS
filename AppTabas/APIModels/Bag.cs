@@ -16,5 +16,10 @@
         public int costo { get; set; } 
         public int scanId { get; set; }
 
+        public Bag(int numero_maleta, int bagcartId)
+        {
+            this.numero_maleta = numero_maleta; 
+            this.bagcartId = bagcartId;     
+        }
     }
 }

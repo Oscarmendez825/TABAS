@@ -21,8 +21,11 @@ namespace AppTabas.Activities
         private User _loggedUser;
         private TextView _welcomeText;
         private Spinner _baggageSpinner;
+        private Spinner _bagCartSpinner;
         private Button _btnScan;
+        private Button _btnAssign;
         private List<Bag> _bagList;
+        private List<BagCart> bagCartList;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,7 +37,9 @@ namespace AppTabas.Activities
             // Get widgets from layout xml
             _welcomeText = FindViewById<TextView>(Resource.Id.welcomeText);
             _baggageSpinner = FindViewById<Spinner>(Resource.Id.baggageSpinner);
+            _bagCartSpinner = FindViewById<Spinner>(Resource.Id.bagcartSpinner);
             _btnScan = FindViewById<Button>(Resource.Id.btnScan);
+            _btnAssign = FindViewById<Button>(Resource.Id.btnAssign);
 
             // Get logged user's info
             _loggedWorkerId = Intent.GetStringExtra("WorkerId");
@@ -55,27 +60,33 @@ namespace AppTabas.Activities
             _bagList = JsonConvert.DeserializeObject<List<Bag>>(send);
             List<string> bagIdList = new List<string>();
 
-            //var bagCartList = JsonConvert.DeserializeObject<List<BagCart>>(send);
-            //List<string> bagCartIdList = new List<string>();
+            // Manage bagcart spinner
+            url = "BagCart/Bagcarts";
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+            send = webClient.DownloadString(url);
+
+            bagCartList = JsonConvert.DeserializeObject<List<BagCart>>(send);
+            List<string> bagCartIdList = new List<string>();
 
             foreach (Bag bag in _bagList)
             {
                 // Show bag to worker only if it hasn't been assigned to a bagcart yet
                 if (bag.bagcartId == 0)
                 {
-                    bagIdList.Add("Maleta # " + bag.numero_maleta.ToString());
+                    bagIdList.Add("Maleta #" + bag.numero_maleta.ToString());
                 }
             };
 
-            /*foreach (BagCart bagCart in bagCartList)
+            foreach (BagCart bagCart in bagCartList)
             {
-                bagCartIdList.Add("BagCart # " + bagCart.identificador_BC.ToString());
-            }*/
+                bagCartIdList.Add("BagCart #" + bagCart.identificador_BC.ToString());
+            }
 
             var adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, bagIdList);
             _baggageSpinner.Adapter = adapter;
 
-            //var adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, bagCartIdList);
+            var adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, bagCartIdList);
+            _bagCartSpinner.Adapter = adapter2;
 
             // Manage buttons
             _btnScan.Click += (sender, args) =>
@@ -83,6 +94,11 @@ namespace AppTabas.Activities
                 scanBag();
             };
 
+            _btnAssign.Click += (sender, args) =>
+            {
+                assignBagCart();
+            };
+            
 
         }
 
@@ -110,6 +126,25 @@ namespace AppTabas.Activities
                     Toast.MakeText(this, toastText, ToastLength.Short).Show();
                 }
             }
+        }
+
+        /// <summary>
+        /// Assigns the selected bagcart to the selected bag
+        /// </summary>
+        private void assignBagCart()
+        {
+            string selectedBag = _baggageSpinner.SelectedItem.ToString().Remove(0, 8);
+            string selectedBagCart = _bagCartSpinner.SelectedItem.ToString().Remove(0, 9);
+
+            Bag newBag = new Bag(Int32.Parse(selectedBag), Int32.Parse(selectedBagCart));
+            var bagJson = JsonConvert.SerializeObject(newBag);
+
+            using var webClient = new WebClient { BaseAddress = MainActivity.baseAddress };
+            var url = "Maleta/AsignarBCMlaeta";
+            webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+            var send = webClient.UploadString(url, bagJson);
+
+            Toast.MakeText(this, "BagCart asignado satisfactoriamente", ToastLength.Short).Show();
         }
     }
 }
