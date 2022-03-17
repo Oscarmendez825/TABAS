@@ -98,7 +98,7 @@ namespace REST.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("AsignarBCMaleta")]
         public Estado asignarBagCart(Maleta maleta) {
             bool flag = false;
             Estado estadotp = new();
