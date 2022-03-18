@@ -7,16 +7,26 @@ import {jsPDF} from "jspdf";
   templateUrl: './reportes.component.html',
   styleUrls: ['./reportes.component.css']
 })
+
+/**
+ * @description Clase utilizada para todo el form del reporte
+ */
 export class ReportesComponent implements OnInit {
   maletas: MaletaModel[] = [];
 
+  /**
+   * @description Método constructor
+   * @param apiService 
+   */
   constructor(private apiService:ApiGetService) { }
 
   ngOnInit(): void {
     this.getElements();
   }
 
-
+  /**
+  * @description Método utilizado para generar el PDF
+  */
   @ViewChild('content', {static: false})el!:ElementRef;
   makePDF(){
     let pdf = new jsPDF('p','pt','a4');

@@ -17,4 +17,7 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
   ]
 })
+/**
+ * @description Clase para los componentes
+ */
 export class ComponentsModule { }

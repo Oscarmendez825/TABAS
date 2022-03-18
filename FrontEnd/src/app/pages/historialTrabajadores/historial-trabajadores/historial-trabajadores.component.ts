@@ -9,14 +9,23 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./historial-trabajadores.component.css']
 })
 
-
+/**
+ * @description: Clase utilizada para todo el form de la lista de los trabajadores
+ */
 export class HistorialTrabajadoresComponent implements OnInit {
 
   trabajadores: TrabajadorModel[]=[];
+  /**
+   * @description: Método constructor
+   * @param apiService 
+   */
   constructor(private apiService:ApiGetService) { }
   ngOnInit(): void {
     this.getHistorial();
   }
+  /**
+   * @description: Método para solicitar el historial de los trabajadores en planilla
+   */
   public getHistorial(){
     this.apiService.getTrabHist().subscribe(
       res => {

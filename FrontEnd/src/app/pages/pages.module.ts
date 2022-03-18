@@ -35,6 +35,9 @@ import { ReporteExtraComponent } from './otroReporte/reporte-extra/reporte-extra
     ComponentsModule
   ]
 })
+/**
+ * @description Clase utilizada para declarar todos los componentes
+ */
 export class PagesModule {
 
 }

@@ -9,6 +9,10 @@ import { TrabajadorModel } from '../models/trabajador-model.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+/**
+ * @description: Clase utilizada para todo el form del inicio de sesión
+ */
 export class LoginComponent implements OnInit {
   trabajadorLogIn: TrabajadorModel =
   {
@@ -19,10 +23,18 @@ export class LoginComponent implements OnInit {
     rol: ''
   }
 
+  /**
+   * @description: Clase utilizada para todo el form de la lista de los trabajadores
+   * @param Auth 
+   */
   constructor(private Auth:AuthService) { }
 
   ngOnInit(): void {}
 
+  /**
+   * @description:
+   * @param event 
+   */
   loginUser(event: { preventDefault: () => void; target: any; }){
 
     event.preventDefault();

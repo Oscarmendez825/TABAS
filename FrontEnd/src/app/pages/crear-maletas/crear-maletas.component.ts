@@ -11,6 +11,10 @@ import jsPDF from 'jspdf';
   templateUrl: './crear-maletas.component.html',
   styleUrls: ['./crear-maletas.component.css']
 })
+
+/**
+ * @description: Clase utilizada para todo el form de asignación de Crear Maletas
+ */
 export class CrearMaletasComponent implements OnInit {
 
   nuevaMaleta: MaletaModel =
@@ -29,10 +33,19 @@ export class CrearMaletasComponent implements OnInit {
   estadoRes: EstadoModel = {
     estado:""
   }
+  /**
+   * @description: Método constructor
+   * @param http 
+   * @param router 
+   * @param apiService 
+   */
   constructor(private http: HttpClient, private router: Router, private apiService: ApiPostService) { }
   ngOnInit(): void {
   }
 
+  /**
+   * @description: Método utilizado para agregar la información de una maleta nueva en la DB
+   */
   sendMaleta():void{
     this.apiService.registrarMaleta(this.nuevaMaleta).subscribe(
       res =>{
@@ -53,6 +66,9 @@ export class CrearMaletasComponent implements OnInit {
   Mensaje="Compra de maleta";
   DetalleMen="N.R";
 
+  /**
+   * @description: Método utilizado para generar el PDF de la factura
+   */
   @ViewChild('content', {static: false})el!:ElementRef;
   makePD(): void{
     let pdf = new jsPDF('p','pt','a4');

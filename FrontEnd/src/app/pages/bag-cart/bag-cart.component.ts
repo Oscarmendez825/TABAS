@@ -10,6 +10,10 @@ import { VueloModel } from '../models/vuelo-model';
   templateUrl: './bag-cart.component.html',
   styleUrls: ['./bag-cart.component.css']
 })
+
+/**
+ * @description: Clase utilizada para todo el form de asignación de BagCart
+ */
 export class BagCartComponent implements OnInit {
 
   vuelos: VueloModel[] = [];
@@ -28,13 +32,21 @@ export class BagCartComponent implements OnInit {
   estadoRes: EstadoModel = {
     estado:""
   }
+  /**
+   * @description: Método constructor
+   * @param apiService 
+   * @param apiService1 
+   */
   constructor(private apiService:ApiGetService, private apiService1: ApiPostService) { }
 
+  
   ngOnInit(): void {
     this.getElements();
     
   }
-
+  /**
+   * @description: Método encargado de solicitar todos los vuelos, bagcarts que hayan en la DB
+   */
   public getElements(){
 
     this.apiService.getVuelos().subscribe(
@@ -57,6 +69,9 @@ export class BagCartComponent implements OnInit {
 
     );
   }
+  /**
+   * @description: Método encargado de asignar un BC a un vuelo
+   */
   public asignarBC(){
     this.apiService1.asignarBagCart(this.vueloTemp).subscribe(
       res =>{

@@ -1,3 +1,6 @@
+/**
+ * @description: Interfaz representante del maleta
+ */
 export interface MaletaModel {
     numero_maleta:number,
     cedulaUsuario:number,
