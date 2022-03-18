@@ -1,7 +1,44 @@
 <app-header></app-header>
-<div class="container-fluid">
-  <div class="row">
-    <p>reportes works!</p>
-  </div>
- </div>
+<div>
+  <p style="color: rgb(224, 192, 141)">
+   a 
+  </p>
+  <p>
+    a
+  </p>
+</div>
+<div class="container-fluid" align = "center" >
+  <h1 style="color: black;">Maletas en registro en TABAS</h1>
+  <table class="table table-striped" id="content" #content>
+    <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">No. Maleta</th>
+      <th scope="col">ID Usuario</th>
+      <th scope="col">ID BagCart</th>
+      <th scope="col">No. Vuelo</th>  
+      <th scope="col">Peso</th>  
+      <th scope="col">Color</th>  
+      <th scope="col">Aceptada</th>  
+      <th scope="col">Costo</th>  
+      <th scope="col">ID Scan</th> 
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lista of maletas; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ lista.numero_maleta}}</td>
+        <td>{{ lista.cedulaUsuario}}</td>
+        <td>{{ lista.bagcartId}}</td>
+        <td>{{ lista.numVuelo}}</td>
+        <td>{{ lista.peso}}</td>
+        <td>{{ lista.color}}</td>
+        <td>{{ lista.aceptada}}</td>
+        <td>{{ lista.costo}}</td>
+        <td>{{ lista.scanId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button (click)="makePDF()">Descargar</button>
 <app-footer></app-footer>

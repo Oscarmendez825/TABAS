@@ -1,5 +1,14 @@
 <app-header></app-header>
-<form name="form" (ngSubmit)="f.form.valid && sendMaleta()" #f="ngForm" novalidate class="sign-up-form">
+<div>
+  <p style="color: rgb(224, 192, 141)">
+   a
+  </p>
+  <p>
+    a
+  </p>
+</div>
+<form name="form" (ngSubmit)="f.form.valid && sendMaleta() && makePD()" #f="ngForm" novalidate class="sign-up-form">
+
   <div class="form-group">
     <div class="container-fluid" align = "center">
   <div class="mb-NoMaleta">
@@ -29,7 +38,7 @@
   </div>
 
   <div class="mb-Peso">
-    <label for="Peso" class="form-label">Peso</label>
+    <label for="Peso" class="form-label">Peso (kg)</label>
     <input class="form-control"
            type="number"
            name="Peso"
@@ -56,21 +65,11 @@
            required/>
   </div>
 
-
-  <div class="mb-Costo">
-    <label for="Costo" class="form-label">Costo</label>
-    <input class="form-control"
-           type="number"
-           name="Costo"
-           id="Costo"
-           name = "Costo"
-           placeholder="100, 200, 300, 400..."
-           [(ngModel)]="nuevaMaleta.costo"
-           #Peso = "ngModel"
-           [ngClass]="{'is-invalid':f.submitted && name.invalid}"
-           required/>
-  </div>
   <p>
+
+
+
+
   </p>
 
   <button type="submit" class="button">Registrar</button>
@@ -78,4 +77,24 @@
     </div>
   </div>
 </form>
+
+<div class="fact" id="content" #content>
+  <h1 style="padding:1px;background-color:rgb(255, 255, 255)">Ministerio de hacienda</h1>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3>Factura electronica (ATV)</h3>
+  <div style=padding:1px;background-color:lightgray;line-height:1.4;>
+    <ul>Clave: {{clave}}</ul>
+    <ul>Número Cédula Emisor: {{nuevaMaleta.cedulaUsuario}}</ul>
+    <ul>Fecha Emisor: {{FechaEmisor}} </ul>
+    <ul>Monto Total Impuesto: {{MontoTotal}}</ul>
+    <ul>Número Cédula Receptor: {{NumReceptor}}</ul>
+    <ul>Número Consecutivo Receptor: {{nuevaMaleta.numero_maleta}}</ul>
+    <ul>Mensaje: {{Mensaje}}</ul>
+    <ul>Detalle Mensaje: {{DetalleMen}}</ul>
+  </div>
+</div>
+
 <app-footer></app-footer>
+

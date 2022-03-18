@@ -1,12 +1,18 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <div class="fadeIn first">
-      <img src="https://img.freepik.com/vector-gratis/dibujos-animados-avion-feliz_43633-642.jpg?w=826" id="icon" alt="User Icon" />
+      <img src="https://www.kindpng.com/picc/m/138-1388633_aviones-volando-png-dibujo-transparent-png.png" id="icon" alt="User Icon" />
     </div>
     <strong>Bienvenidos a TecAirlines!</strong>
     <form (submit)="loginUser($event)">
-      <input type="text" id="cedula" class="fadeIn second" name="login" placeholder="Cedula">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+      <input type="number" id="cedula" class="fadeIn second" name="login" placeholder="Cédula" required>
+      <p>
+
+      </p>
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" required>
+      <p>
+        
+      </p>
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
   </div>

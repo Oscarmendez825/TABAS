@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule} from "@angular/common/http";
 import { HistorialTrabajadoresComponent } from './historialTrabajadores/historial-trabajadores/historial-trabajadores.component'
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
+import { ReporteExtraComponent } from './otroReporte/reporte-extra/reporte-extra.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ComponentsModule } from '../components/components.module';
     ReportesComponent,
     RegistroTrabajadorComponent,
     HistorialTrabajadoresComponent,
+    ReporteExtraComponent,
 
   ],
   imports: [
