@@ -1,4 +1,8 @@
-﻿namespace REST.Clases
+﻿/// <summary>
+/// Creación del modelo de los reportes con la información necesaria para estos
+/// </summary>
+
+namespace REST.Clases
 {
     public class Reporte
     {
