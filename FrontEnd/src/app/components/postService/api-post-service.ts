@@ -10,7 +10,7 @@ import { VueloModel } from 'src/app/pages/models/vuelo-model';
     providedIn: 'root'
 })
 export class ApiPostService {
-    private baseUrl = "https://localhost:44324/api";
+    private baseUrl = "https://localhost:44381/api";
     private regTrab = `${this.baseUrl}\\Usuario`
     private regMal = `${this.baseUrl}\\Maleta`
     private iniciarSesion = `${this.baseUrl}\\Usuario/IniciarSesion`

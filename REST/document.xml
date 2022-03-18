@@ -3,19 +3,19 @@
   <xs:element name="FacturaElectronica">
     <xs:complexType>
       <xs:sequence>
-        <xs:element default="62099593" name="Clave" type="xs:string" />
-        <xs:element default="975087" name="CodigoActividad" />
-        <xs:element default="0" name="NumeroConsecutivo" />
-        <xs:element default="3/17/2022" name="FechaEmision" />
-        <xs:element default="David" name="Emisor" />
-        <xs:element default="Hacienda" name="Receptor" />
+        <xs:element default="24115754" name="Clave" type="xs:string" />
+        <xs:element default="497637" name="CodigoActividad" />
+        <xs:element default="19564" name="NumeroConsecutivo" />
+        <xs:element default="18/3/2022" name="FechaEmision" />
+        <xs:element default="789654" name="Emisor" />
+        <xs:element default="25394000" name="Receptor" />
         <xs:element default="Otros" name="CondicionVenta" />
         <xs:element default="NR" name="PlazoCredito" />
         <xs:element default="Virtual" name="MedioPago" />
-        <xs:element default="Maleta:Azul, Peso (kg):34" name="DetalleServicio" />
+        <xs:element default="Maleta:Morado, Peso (kg):60" name="DetalleServicio" />
         <xs:element default="NR" name="OtrosCargosElement" />
-        <xs:element default="Costo de la maleta en dolares es de:2450" name="ResumenFactura" />
-        <xs:element default="Es la maleta numero:14" name="InformacionReferencia" />
+        <xs:element default="Costo de la maleta en dolares es de:115" name="ResumenFactura" />
+        <xs:element default="NR" name="InformacionReferencia" />
         <xs:element default="NR" name="Otros" />
       </xs:sequence>
     </xs:complexType>

@@ -10,7 +10,7 @@ namespace REST.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
         /**
          * Metodo que retorna la informacion de todos los usuarios

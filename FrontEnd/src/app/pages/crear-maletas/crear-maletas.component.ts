@@ -52,8 +52,8 @@ export class CrearMaletasComponent implements OnInit {
   NumReceptor="25394000";
   Mensaje="Compra de maleta";
   DetalleMen="N.R";
-  @ViewChild('content', {static: false})el!:ElementRef;
 
+  @ViewChild('content', {static: false})el!:ElementRef;
   makePD(): void{
     let pdf = new jsPDF('p','pt','a4');
     pdf.html(this.el.nativeElement,{
