@@ -16,7 +16,7 @@ namespace REST.Controllers
 
         private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\VUELOS.json";
         private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
-        private string path3 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\AVION.json";
+        private string path3 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\AVIONES.json";
 
         // GET: api/<VueloController>
         [HttpGet("Vuelos")]
