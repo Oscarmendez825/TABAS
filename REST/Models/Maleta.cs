@@ -43,7 +43,7 @@
 
             if (rand.Next(0, 2) != 0)
             {
-                this.aceptada = true;
+                aceptada = true;
             }
 
         }

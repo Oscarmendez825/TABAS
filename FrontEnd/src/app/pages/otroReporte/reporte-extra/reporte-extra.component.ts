@@ -1,3 +1,4 @@
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiGetService } from 'src/app/components/getService/api-get-service';
 import { ReporteModel } from '../../models/reporte-model';
@@ -9,6 +10,7 @@ import {jsPDF} from "jspdf";
   styleUrls: ['./reporte-extra.component.css']
 })
 export class ReporteExtraComponent implements OnInit {
+
 
   reportes: ReporteModel[] = [];
   constructor(private apiService:ApiGetService) { }
@@ -38,4 +40,5 @@ export class ReporteExtraComponent implements OnInit {
 
     );
   }
+
 }
