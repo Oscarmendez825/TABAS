@@ -2,7 +2,7 @@
   {
     "numero_maleta": 1234,
     "cedulaUsuario": 1111111,
-    "bagcartId": 23070,
+    "bagcartId": 0,
     "numVuelo": 9995578,
     "peso": 20,
     "color": "azul",
@@ -24,7 +24,7 @@
   {
     "numero_maleta": 9876,
     "cedulaUsuario": 5555555,
-    "bagcartId": 23199,
+    "bagcartId": 0,
     "numVuelo": 9996388,
     "peso": 25,
     "color": "rojo",
