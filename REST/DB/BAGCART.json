@@ -1,1 +1,23 @@
-[{"identificador_BC":23715,"cedulaTrab":2019150432,"marca":"Nissan","anno":2020,"numSello":55447},{"identificador_BC":23070,"cedulaTrab":2019150432,"marca":"KIA","anno":2017,"numSello":55008},{"identificador_BC":23199,"cedulaTrab":2019042386,"marca":"BMW","anno":2022,"numSello":55128}]
+[
+  {
+    "identificador_BC": 23715,
+    "cedulaTrab": 2019150432,
+    "marca": "Nissan",
+    "anno": 2020,
+    "numSello": 55447
+  },
+  {
+    "identificador_BC": 23070,
+    "cedulaTrab": 2019150432,
+    "marca": "KIA",
+    "anno": 2017,
+    "numSello": 55008
+  },
+  {
+    "identificador_BC": 23199,
+    "cedulaTrab": 2019042386,
+    "marca": "BMW",
+    "anno": 2022,
+    "numSello": 55128
+  }
+]

@@ -1,1 +1,30 @@
-[{"Cedula":2019042386,"contrasena":"jisoo","Nombre":"Daniela","Apellido":"Brenes","rol":"scan"},{"Cedula":2018099813,"contrasena":"aldo","Nombre":"Aldo","Apellido":"Cambronero","rol":"Administrador"},{"Cedula":2017136865,"contrasena":"gabriel","Nombre":"Gabriel","Apellido":"Gonzalez","rol":"embarcador"},{"Cedula":2019150432,"contrasena":"oscar","Nombre":"Oscar","Apellido":"Mendez","rol":"scan"}]
+[
+  {
+    "Cedula": 2019042386,
+    "contrasena": "jisoo",
+    "Nombre": "Daniela",
+    "Apellido": "Brenes",
+    "rol": "scan"
+  },
+  {
+    "Cedula": 2018099813,
+    "contrasena": "aldo",
+    "Nombre": "Aldo",
+    "Apellido": "Cambronero",
+    "rol": "Administrador"
+  },
+  {
+    "Cedula": 2017136865,
+    "contrasena": "gabriel",
+    "Nombre": "Gabriel",
+    "Apellido": "Gonzalez",
+    "rol": "embarcador"
+  },
+  {
+    "Cedula": 2019150432,
+    "contrasena": "oscar",
+    "Nombre": "Oscar",
+    "Apellido": "Mendez",
+    "rol": "scan"
+  }
+]
