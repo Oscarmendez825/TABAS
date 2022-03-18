@@ -1,3 +1,6 @@
+/**
+ * @description: Interfaz representante del trabajador
+ */
 export interface TrabajadorModel {
     Nombre:string;
     Apellido:string;

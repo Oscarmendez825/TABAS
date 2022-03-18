@@ -29,4 +29,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+/**
+ * @description Clase utilizada para delarar las rutas de navegación entre componentes
+ */
 export class AppRoutingModule { }

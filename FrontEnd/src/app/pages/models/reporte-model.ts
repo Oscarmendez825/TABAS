@@ -1,3 +1,6 @@
+/**
+ * @description: Interfaz representante del reporte
+ */
 export interface ReporteModel {
     numVuelo: number,
     placaAvion: number,
