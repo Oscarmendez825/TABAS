@@ -1,1 +1,22 @@
-<p>reporte-extra works!</p>
+<div class="container" id="content" #content>
+    <h1 style="padding:12px;background-color:rgb(255, 255, 255)">Registro de vuelos</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h3>Vuelos de TecAirlines:</h3>
+    <div style=padding:12px;background-color:gray;line-height:1.4;>
+      <li *ngFor="let reporte of reportes">
+  
+        <ul>Número de vuelo:  {{reporte.numVuelo}}</ul>
+        <ul>Placa Avión No.: {{reporte.placaAvion}}</ul>
+        <ul>Capacidad (pasajeros): {{reporte.capacidad}}</ul>
+        <ul>Total de maletas en el vuelo: {{reporte.tMaletasV}}</ul>
+        <ul>ID del BagCart: {{reporte.BCId}}</ul>
+        <ul>Total de maletas en BagCart: {{reporte.tMaletasBC}}</ul>
+        <ul>Total de maletas rechazadas: {{reporte.tMaletasRe}}</ul>
+  
+      </li>
+    </div>
+  
+  </div>
+  <button (click)="makePDF()">Descargar</button>
