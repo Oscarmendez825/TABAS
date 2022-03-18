@@ -19,7 +19,7 @@ export class ReportesComponent implements OnInit {
 
   @ViewChild('content', {static: false})el!:ElementRef;
   makePDF(){
-    let pdf = new jsPDF('p','pt',[220,278]);
+    let pdf = new jsPDF('p','pt','a4');
     pdf.html(this.el.nativeElement,{
       callback: (pdf) => {
         pdf.save("ReporteMaletas.pdf");

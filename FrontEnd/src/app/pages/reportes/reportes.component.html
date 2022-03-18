@@ -7,38 +7,27 @@
     a
   </p>
 </div>
-<div class="container-fluid" align = "center" >
-  <h1 style="color: black;">Maletas en registro en TABAS</h1>
-  <table class="table table-striped" id="content" #content>
-    <thead>
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">No. Maleta</th>
-      <th scope="col">ID Usuario</th>
-      <th scope="col">ID BagCart</th>
-      <th scope="col">No. Vuelo</th>  
-      <th scope="col">Peso</th>  
-      <th scope="col">Color</th>  
-      <th scope="col">Aceptada</th>  
-      <th scope="col">Costo</th>  
-      <th scope="col">ID Scan</th> 
-    </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let lista of maletas; index as i">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ lista.numero_maleta}}</td>
-        <td>{{ lista.cedulaUsuario}}</td>
-        <td>{{ lista.bagcartId}}</td>
-        <td>{{ lista.numVuelo}}</td>
-        <td>{{ lista.peso}}</td>
-        <td>{{ lista.color}}</td>
-        <td>{{ lista.aceptada}}</td>
-        <td>{{ lista.costo}}</td>
-        <td>{{ lista.scanId}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container" id="content" #content>
+  <h1 style="padding:12px;background-color:rgb(255, 255, 255)">Registro de maletas</h1>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3>Maletas de TecAirlines:</h3>
+  <div style=padding:12px;background-color:white;line-height:1.4;>
+    <li *ngFor="let reporte of maletas">
+
+      <ul>Número de maleta:  {{reporte.numero_maleta}}</ul>
+      <ul>Cedula Usuario: {{reporte.cedulaUsuario}}</ul>
+      <ul>ID BagCart: {{reporte.bagcartId}}</ul>
+      <ul>Peso: {{reporte.peso}}</ul>
+      <ul>Color: {{reporte.color}}</ul>
+      <ul>Aceptada: {{reporte.aceptada}}</ul>
+      <ul>Costo: {{reporte.costo}}</ul>
+      <ul>Encargado del escaneo: {{reporte.scanId}}</ul>
+
+    </li>
+  </div>
+
 </div>
 <button (click)="makePDF()">Descargar</button>
 <app-footer></app-footer>
