@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div>
   <p style="color: rgb(224, 192, 141)">
-   a
+   a 
   </p>
   <p>
     a
@@ -13,11 +13,11 @@
     <div class="container-fluid" align = "center">
   <div class="mb-NoMaleta">
     <label for="NoMaleta" class="form-label">Número de maleta</label>
-    <input type="number"
-           class="form-control"
-           id="NoMaleta"
+    <input type="number" 
+           class="form-control" 
+           id="NoMaleta" 
            name = "NoMaleta"
-           placeholder= "0, 1, 2, 3, 4..."
+           placeholder= "0, 1, 2, 3, 4..." 
            [(ngModel)]="nuevaMaleta.numero_maleta"
            #name = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -27,8 +27,8 @@
 
   <div class="mb-Cedula">
     <label for="Cedula" class="form-label">Cédula</label>
-    <input type="number"
-           class="form-control"
+    <input type="number" 
+           class="form-control" 
            id="Cedula"
            name = "Cedula"
            [(ngModel)]="nuevaMaleta.cedulaUsuario"
@@ -39,12 +39,12 @@
 
   <div class="mb-Peso">
     <label for="Peso" class="form-label">Peso (kg)</label>
-    <input class="form-control"
-           type="number"
-           name="Peso"
+    <input class="form-control" 
+           type="number" 
+           name="Peso" 
            id="Peso"
            name = "Peso"
-           placeholder="0, 1, 2, 3, 4..."
+           placeholder="0, 1, 2, 3, 4..." 
            [(ngModel)]="nuevaMaleta.peso"
            #Peso = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -53,12 +53,12 @@
 
   <div class="mb-Clor">
     <label for="Clor" class="form-label">Color</label>
-    <input class="form-control"
-           type="text"
-           name="Clor"
+    <input class="form-control" 
+           type="text" 
+           name="Clor" 
            id="Clor"
            name = "Clor"
-           placeholder="Rojo, Negro, Morado, Azul, Blanco..."
+           placeholder="Rojo, Negro, Morado, Azul, Blanco..." 
            [(ngModel)]="nuevaMaleta.color"
            #Peso = "ngModel"
            [ngClass]="{'is-invalid':f.submitted && name.invalid}"
@@ -68,7 +68,7 @@
   <p>
 
 
-
+    
 
   </p>
 
