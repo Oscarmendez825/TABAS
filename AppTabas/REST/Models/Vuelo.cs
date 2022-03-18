@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Modelo de la entidad Vuelo
-/// </summary>
-
 namespace REST.Models
 {
     public class Vuelo

@@ -11,8 +11,8 @@ namespace REST.Controllers
     public class BagCartController : ControllerBase
     {
 
-        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
-        private string path2 = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
+        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
+        private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\TRABAJADORES.json";
 
        
         /// <summary>

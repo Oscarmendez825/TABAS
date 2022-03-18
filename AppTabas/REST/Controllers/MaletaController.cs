@@ -17,13 +17,8 @@ namespace REST.Controllers
         //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\MALETAS.json";
         // private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\TRABAJADORES.json";
 
-        private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\MALETAS.json";
+        private string path = @"C:\Users\dani_\Documents\GitHub\TABAS\REST\DB\MALETAS.json";
 
-        /// <summary>
-        /// Get de maletas totales
-        /// </summary>
-        /// <returns>Se retorna el json con el total de maletas</returns>
-        /// 
         // GET: api/<MaletaController>
         [HttpGet("Maletas")]
         public string GetMaletas()
@@ -34,11 +29,7 @@ namespace REST.Controllers
                 return json;
             }
         }
-        /// <summary>
-        /// Get de una maleta en específico según su número de maleta
-        /// </summary>
-        /// <param name="numero_maleta"></param>
-        /// <returns>Se retorna el json de la maleta deseada</returns>
+
         // GET api/<MaletaController>
         [HttpGet("{numero_maleta}")]
         public string GetMaleta(string numero_maleta)
@@ -81,11 +72,6 @@ namespace REST.Controllers
             return 0;
         }
 
-        /// <summary>
-        /// Post de maleta mediante un json
-        /// </summary>
-        /// <param name="maleta"></param>
-        /// <returns>Se retorna el estado de aceptación del Post</returns>
         // POST api/<MaletaController>
         [HttpPost]
         public Estado addMaleta(Maleta maleta)
@@ -228,12 +214,6 @@ namespace REST.Controllers
             xwriter.Formatting = System.Xml.Formatting.Indented;
             customerSchema.Write(xwriter);
         }
-
-        /// <summary>
-        /// Post para asignar una maleta a un bagcart
-        /// </summary>
-        /// <param name="maleta"></param>
-        /// <returns>Se retorna el estado de la solicitud</returns>
         [HttpPost("AsignarBCMaleta")]
         public Estado asignarBagCart(Maleta maleta) {
             bool flag = false;

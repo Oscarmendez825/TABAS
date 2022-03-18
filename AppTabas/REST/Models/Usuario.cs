@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Modelo de la entidad Usuario
-/// </summary>
-
 namespace REST.Models
 {
     public class Usuario

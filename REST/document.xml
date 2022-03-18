@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica" targetNamespace="https://cdn.comprobanteselectronicos.go.cr/xml-schemas/v4.3/facturaElectronica" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FacturaElectronica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element default="24115754" name="Clave" type="xs:string" />
+        <xs:element default="497637" name="CodigoActividad" />
+        <xs:element default="19564" name="NumeroConsecutivo" />
+        <xs:element default="18/3/2022" name="FechaEmision" />
+        <xs:element default="789654" name="Emisor" />
+        <xs:element default="25394000" name="Receptor" />
+        <xs:element default="Otros" name="CondicionVenta" />
+        <xs:element default="NR" name="PlazoCredito" />
+        <xs:element default="Virtual" name="MedioPago" />
+        <xs:element default="Maleta:Morado, Peso (kg):60" name="DetalleServicio" />
+        <xs:element default="NR" name="OtrosCargosElement" />
+        <xs:element default="Costo de la maleta en dolares es de:115" name="ResumenFactura" />
+        <xs:element default="NR" name="InformacionReferencia" />
+        <xs:element default="NR" name="Otros" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

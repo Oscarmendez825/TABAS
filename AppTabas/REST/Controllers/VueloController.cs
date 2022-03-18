@@ -10,16 +10,15 @@ namespace REST.Controllers
     [ApiController]
     public class VueloController : ControllerBase
     {
+        // private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\VUELOS.json";
+        //private string path2 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\BAGCART.json";
+        //private string path3 = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVION.json";
 
         private string path = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\VUELOS.json";
         private string path2 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\BAGCART.json";
         private string path3 = @"C:\Users\omend\Documents\GitHub\TABAS\REST\DB\AVIONES.json";
 
-        /// <summary>
-        /// Get de vuelos totales
-        /// </summary>
-        /// <returns> Se retorna el json de vuelos totales</returns>
-        
+        // GET: api/<VueloController>
         [HttpGet("Vuelos")]
         public string getVuelos()
         {
@@ -30,127 +29,115 @@ namespace REST.Controllers
             }
         }
 
-        /// <summary>
-        /// Get de un vuelo específico mediante su número de vuelo
-        /// </summary>
-        /// <param name="numVuelo"></param>
-        /// <returns>Se retorna el json con el vuelo deseado</returns>
-        
+        // GET api/<VueloController>/5
         [HttpGet("{numVuelo}")]
         public string getVuelo(string numVuelo)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el archivo
-                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json); //Se crea una variable con todos los vuelos
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
                 foreach (Vuelo vuelotp in vuelos)
                 {
-                    if (vuelotp.numVuelo == Int32.Parse(numVuelo)) //Se busca el vuelo según su llave
+                    if (vuelotp.numVuelo == Int32.Parse(numVuelo))
                     {
-                        return JsonConvert.SerializeObject(vuelotp); //Se retorna el json con el vuelo solicitado
+                        return JsonConvert.SerializeObject(vuelotp);
                     }
                 }
             }
             return "ERROR";
         }
 
-        /// <summary>
-        /// Post de Vuelos 
-        /// </summary>
-        /// <param name="vuelo"></param>
-        /// <returns>Se retorna el estado de aceptación de la solicitud</returns>
-        
+
+        // POST api/<VueloController>
         [HttpPost]
         public Estado agregarVuelo(Vuelo vuelo)
         {
-            //Inicialización de parámetros
             String jsonEscribir = "";
             Estado estadotp = new Estado();
             bool flag1 = false;
             bool flag2 = false;
             using (StreamReader jsonStream = System.IO.File.OpenText(path2))
             {
-                var json = jsonStream.ReadToEnd();//Se lee el archivo
-                var bagcarts = JsonConvert.DeserializeObject<List<BagCart>>(json); //Se crea una lista con todos los bagcarts
+                var json = jsonStream.ReadToEnd();
+                var bagcarts = JsonConvert.DeserializeObject<List<BagCart>>(json);
                 foreach (BagCart bagcarttp in bagcarts)
                 {
-                    if (bagcarttp.identificador_BC == vuelo.BC_ID) //Se validan que sean iguales
+                    if (bagcarttp.identificador_BC == vuelo.BC_ID)
                     {
-                        flag1 = true; //Se hace true el flag
+                        flag1 = true;
                     }
                 }
             }
 
             using (StreamReader jsonStream = System.IO.File.OpenText(path3))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el archivo
-                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json); //Se crea una lista con todos los aviones
+                var json = jsonStream.ReadToEnd();
+                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json);
                 foreach (Avion aviontp in aviones)
                 {
-                    if (aviontp.placaAvion == vuelo.placaAvion) //Se valida que las placas de aviones sean iguales
+                    if (aviontp.placaAvion == vuelo.placaAvion)
                     {
-                        flag2 = true;//Se hace true el flag
+                        flag2 = true;
                     }
                 }
             }
 
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el archivo
-                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json); //Se crea una lista de todos los vuelos
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
                 foreach (Vuelo vuelotp in vuelos)
                 {
-                    if ((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) || (flag2 == false)) //Se valida que no se repitan y que el estado de los flags
+                    if ((vuelotp.BC_ID == vuelo.BC_ID) || (flag1 == false) || (flag2 == false))
                     {
                         estadotp.estado = "ERROR";
-                        return estadotp; //Se retorna el estado de la solicitud
+                        return estadotp;
                     }
                 }
 
-                vuelos.Add(vuelo); //Se añade el vuelo
+                vuelos.Add(vuelo);
                 string json2 = JsonConvert.SerializeObject(vuelos);
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
             estadotp.estado = "OK";
-            return estadotp;//Se retorna el estado de la solicitud
+            return estadotp;
         }
-
 
 
         [HttpPost ("AsignarBCVuelo")]
         public Estado asignarBagCart(Vuelo vuelo)
         {
-            //Inicialización de parámetros
             bool flag = false;
             Estado estadotp = new();
             string jsonEscribir = "";
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el archivo
-                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json); //Se crea la variable con los vuelos totales
+                var json = jsonStream.ReadToEnd();
+                var vuelos = JsonConvert.DeserializeObject<List<Vuelo>>(json);
                 foreach (Vuelo vuelotp in vuelos)
                 {
-                    if ((vuelotp.numVuelo == vuelo.numVuelo)) //Se valida el número de vuelo
+                    if ((vuelotp.numVuelo == vuelo.numVuelo))
                     {
-                        vuelotp.BC_ID = vuelo.BC_ID; //Se le da el valor al id del bagcart
+                        vuelotp.BC_ID = vuelo.BC_ID;
                         flag = true;
                         break;
                     }
                 }
                 string json2 = JsonConvert.SerializeObject(vuelos);
-                jsonEscribir = json2; //Se escribe en el json
+                jsonEscribir = json2;
             }
-            if (flag == true) //Se valida el flag
+            if (flag == true)
             {
                 System.IO.File.WriteAllText(path, jsonEscribir);
                 estadotp.estado = "OK";
-                return estadotp; //Se retorna el estado
+                return estadotp;
             }
             else
             {
                 estadotp.estado = "ERROR";
-                return estadotp;//Se retorna el estado
+                return estadotp;
             }
 
         }

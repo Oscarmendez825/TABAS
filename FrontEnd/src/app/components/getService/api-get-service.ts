@@ -13,7 +13,7 @@ import { ReporteModel } from 'src/app/pages/models/reporte-model';
     providedIn: 'root'
 })
 export class ApiGetService {
-    private baseUrl = "https://localhost:44324/api";
+    private baseUrl = "https://localhost:44381/api";
     private getTrabajadoresHistorial = `${this.baseUrl}\\Usuario/Trabajadores`
     private getVueloG = `${this.baseUrl}\\Vuelo/Vuelos`
     private getBagCartG = `${this.baseUrl}\\BagCart/Bagcarts`

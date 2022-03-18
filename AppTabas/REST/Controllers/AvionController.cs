@@ -11,42 +11,32 @@ namespace REST.Controllers
     public class AvionController : ControllerBase
     {
         private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\AVIONES.json";
+        //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVIONES.json";
 
-
-        /// <summary>
-        /// Get de aviones
-        /// </summary>
-        /// <returns>Se retorna el JSON de aviones de la base de datos</returns>
-
-
+        // GET: api/<AvionController>
         [HttpGet("Aviones")]
         public string GetAviones()
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el Json de la base de datos
+                var json = jsonStream.ReadToEnd();
                 return json;
             }
         }
 
-        /// <summary>
-        /// Get de un avión específica¿o a partir de su placa
-        /// </summary>
-        /// <param name="placa"></param>
-        /// <returns>Avion de la placa especificada</returns>
-       
+        // GET api/<AvionController>/5
         [HttpGet("{placaAvion}")]
         public string GetAvion(string placa)
         {
             using (StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el documento
-                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json); //Se crea una variable con todos los aviones para ser validados
+                var json = jsonStream.ReadToEnd();
+                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json);
                 foreach(Avion aviontp in aviones)
                 {
-                    if(aviontp.placaAvion == Int32.Parse(placa)) //Se valida que la placa concuerde
+                    if(aviontp.placaAvion == Int32.Parse(placa))
                     {
-                        return JsonConvert.SerializeObject(aviontp); //Se retorna el Json del avion 
+                        return JsonConvert.SerializeObject(aviontp);
                     }
                 }
             }
@@ -54,38 +44,31 @@ namespace REST.Controllers
             return "ERROR";
         }
 
-        /// <summary>
-        /// Post de aviones mediante un json
-        /// </summary>
-        /// <param name="avion"></param>
-        /// <returns>Se retorna un estado de aceptación o no de la acción</returns>
-        /// 
+        // POST api/<AvionController>
         [HttpPost]
         public Estado AgregarAvion(Avion avion)
         {
-            //Inicialización de variables necesarias
-
-            string jsonEscribir = ""; 
+            string jsonEscribir = "";
             Estado estadotp = new Estado();
             using(StreamReader jsonStream = System.IO.File.OpenText(path))
             {
-                var json = jsonStream.ReadToEnd(); //Se lee el archivo
-                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json); //Se crea una variable con todos los aviones
+                var json = jsonStream.ReadToEnd();
+                var aviones = JsonConvert.DeserializeObject<List<Avion>>(json);
                 foreach(Avion aviontp in aviones)
                 {
-                    if(aviontp.placaAvion == avion.placaAvion) //Validación de que no se repita la placa del avion
+                    if(aviontp.placaAvion == avion.placaAvion)
                     {
                         estadotp.estado = "ERROR";
                         return estadotp;
                     }
                 }
-                aviones.Add(avion); //Se agrega el avion
+                aviones.Add(avion);
                 string json2 = JsonConvert.SerializeObject(aviones);
                 jsonEscribir = json2;
             }
             System.IO.File.WriteAllText(path, jsonEscribir);
             estadotp.estado = "OK";
-            return estadotp; //Se retorna el estado de la solicitud
+            return estadotp;
         }
 
 

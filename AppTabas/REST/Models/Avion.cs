@@ -1,8 +1,4 @@
-﻿/// <summary>
-/// Modelo de la entidad avión
-/// </summary>
-
-namespace REST.Models
+﻿namespace REST.Models
 {
     public class Avion
     {
