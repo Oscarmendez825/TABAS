@@ -6,6 +6,7 @@ import { TrabajadorModel } from 'src/app/pages/models/trabajador-model.model';
 import { VueloModel } from 'src/app/pages/models/vuelo-model';
 import { BagCartModel } from 'src/app/pages/models/bag-cart-model';
 import { MaletaModel } from 'src/app/pages/models/maleta-model';
+import { ReporteModel } from 'src/app/pages/models/reporte-model';
 
 
 @Injectable({
@@ -17,6 +18,8 @@ export class ApiGetService {
     private getVueloG = `${this.baseUrl}\\Vuelo/Vuelos`
     private getBagCartG = `${this.baseUrl}\\BagCart/Bagcarts`
     private getMaletaG = `${this.baseUrl}\\Maleta/Maletas`
+    private getReporteG = `${this.baseUrl}\\Reporte`
+
     constructor(private http: HttpClient) {
 
     }
@@ -32,6 +35,9 @@ export class ApiGetService {
     }
     getMaletas():Observable<MaletaModel[]>{
         return this.http.get<MaletaModel[]>(this.getMaletaG);
+    }
+    getReporte():Observable<ReporteModel[]>{
+        return this.http.get<ReporteModel[]>(this.getReporteG);
     }
 
 }
