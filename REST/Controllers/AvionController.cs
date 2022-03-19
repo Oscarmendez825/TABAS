@@ -11,9 +11,14 @@ namespace REST.Controllers
     public class AvionController : ControllerBase
     {
         private string path = @"C:\Users\omend\Documents\GitHub\REST\RestAPI\REST\DB\AVIONES.json";
-        //private string path = @"C:\Users\Familia\Documents\Gabo\Pruebas\REST\RestAPI\REST\DB\AVIONES.json";
 
-        // GET: api/<AvionController>
+
+        /// <summary>
+        /// Get de aviones
+        /// </summary>
+        /// <returns>Se retorna el JSON de aviones de la base de datos</returns>
+
+
         [HttpGet("Aviones")]
         public string GetAviones()
         {

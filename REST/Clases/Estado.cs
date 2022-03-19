@@ -1,4 +1,8 @@
-﻿namespace REST.Models
+﻿/// <summary>
+/// Creación del estado para la devolución de los métodos Post
+/// </summary>
+
+namespace REST.Models
 {
     public class Estado
     {

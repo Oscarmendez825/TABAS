@@ -1,4 +1,8 @@
-﻿namespace REST.Models
+﻿/// <summary>
+/// Modelo de la entidad maleta
+/// </summary>
+
+namespace REST.Models
 {
     public class Maleta
     {
